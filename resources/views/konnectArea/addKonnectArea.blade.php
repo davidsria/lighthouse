@@ -25,20 +25,20 @@
             </div>
             <!-- /.box-header -->
             <!-- form start -->
-            @if(Session::has('areaSuccess'))
+            @if(Session::has('areaResponse'))
               <div class="alert alert-success" role="alert">
-                {{Session::get('areaSuccess')}}
+                {{Session::get('areaResponse')}}
               </div>
             @endif
-             <form role="form" method="post" action="{{url('/addKonnectArea')}}">
+             <form role="form" method="post" action="{{url('/konnectArea/add')}}">
               <div class="box-body">
                 <div class="form-group">
                   <label for="exampleInputEmail1">Konnect Area Name</label>
-                  <input type="text" class="form-control" name="name" id="exampleInputEmail1" placeholder="Enter konnect area name">
+                  <input type="text" class="form-control" name="name" id="exampleInputEmail1" placeholder="Enter konnect area name" required/>
                 </div>
                 <div class="form-group">
                   <label for="exampleInputPassword1">Password</label>
-                  <input type="password" name="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+                  <input type="password" name="password" class="form-control" id="exampleInputPassword1" placeholder="Password" required/>
                 </div>
               </div>
               <!-- /.box-body -->
@@ -56,9 +56,9 @@
             <div class="box-header with-border">
               <h3 class="box-title">Konnect Center</h3>
             </div>
-             @if(Session::has('centerSuccess'))
+             @if(Session::has('centerResponse'))
               <div class="alert alert-success" role="alert">
-                {{Session::get('centerSuccess')}}
+                {{Session::get('centerResponse')}}
               </div>
             @endif
              <form role="form" method="post" action="{{url('/konnectCenter/add')}}">
@@ -73,7 +73,7 @@
               </select>
               <br>
               {{ csrf_field() }}
-              <input class="form-control" type="text" name="name" placeholder="Enter Konnect center">
+              <input class="form-control" type="text" name="name" placeholder="Enter Konnect center" required/>
               <br>
               <button type="submit" name="addKonnectCenter" class="btn btn-primary">Add</button>
             </div>
@@ -99,13 +99,13 @@
           <!-- Horizontal Form -->
           <div class="box box-info">
             <div class="box-header with-border">
-              <h3 class="box-title">Add Geographic Name</h3>
+              <h3 class="box-title">Add Geographical Name</h3>
             </div>
             <!-- /.box-header -->
             <!-- form start -->
-            @if(Session::has('geographicSuccess'))
+            @if(Session::has('geographicalResponse'))
               <div class="alert alert-success" role="alert">
-                {{Session::get('geographicSuccess')}}
+                {{Session::get('geographicalResponse')}}
               </div>
             @endif
              <form class="form-horizontal" role="form" method="post" action="{{url('/geographicalName/add')}}">
@@ -130,7 +130,7 @@
                   <label for="inputPassword3" class="col-sm-2 control-label">Name</label>
 
                   <div class="col-sm-10">
-                    <input type="text" name="name" class="form-control" id="inputPassword3" placeholder="Geographic name">
+                    <input type="text" name="name" class="form-control" id="inputPassword3" placeholder="Geographic name" required/>
                   </div>
                 </div>
                               </div>
@@ -150,9 +150,9 @@
             </div>
             <!-- /.box-header -->
             <div class="box-body">
-              @if(Session::has('pastorSuccess'))
+              @if(Session::has('pastorResponse'))
               <div class="alert alert-success" role="alert">
-                {{Session::get('pastorSuccess')}}
+                {{Session::get('pastorResponse')}}
               </div>
             @endif
              <form role="form" method="post" action="{{url('/konnectPastor/add')}}">
@@ -160,7 +160,7 @@
                 <!-- text input -->
                 <div class="form-group">
                   <label>Pastor Name</label>
-                  <input type="text" name="name" class="form-control" placeholder="Enter Pastor Name">
+                  <input type="text" name="name" class="form-control" placeholder="Enter Pastor Name" required/>
                 </div>
                 
                 <!-- select -->

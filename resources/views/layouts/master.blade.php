@@ -23,8 +23,8 @@
     <!-- Main content -->
     <section class="content">
       <!-- Small boxes (Stat box) -->
-      @yield('notification')
-     <!-- /.row -->
+      @include('partials.notification')
+      <!-- /.row -->
       <!-- Main row -->
       @yield('content')
       <!-- /.row (main row) -->
@@ -44,7 +44,6 @@
 <!-- ./wrapper -->
 
 <!-- jQuery 3 -->
-@yield('script')
 @include('partials.script')
 </body>
 </html>

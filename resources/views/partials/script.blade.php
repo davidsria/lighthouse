@@ -52,7 +52,9 @@
 <!-- FastClick -->
 <script src="{{ URL::asset('bower_components/fastclick/lib/fastclick.js') }}"></script>
 <!-- Page script -->
-
+<script src="//netdna.bootstrapcdn.com/bootstrap/3.0.3/js/bootstrap.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
    
     
 
