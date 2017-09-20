@@ -83,9 +83,8 @@
         <h4 class="modal-title" id="title"></h4>
       </div>
       <div class="modal-body">
-      <div id="deleteMessage" style="display:none;">
-        
-      </div>
+      <div id="deleteMessage" style="display:none;"></div>
+      <span id="deleteId" style="display:none;"></span>
       <div class="container" id="viewDisplay" style="display:none">
         <h3><strong id="areaName"></strong></h3>
         <h5><strong>Strong Ikeja Konnect Center</strong></h5>
@@ -166,6 +165,7 @@
         $(document).on('click', '#deleteArea', function(event){
                 var name = $(this).data('name');
                 var id = $(this).data('id');
+                $('#deleteId').text(id);
                 $('#delete').attr('data-id', id);
                 $('#title').text('Delete Confirmation');
                 $('#deleteMessage').html('Do you want to delete&nbsp;<strong>'+name+'&nbsp;</strong> konnect area?');
@@ -181,7 +181,7 @@
         });
 
          $('#delete').click(function(event){
-                var id = $(this).data('id');
+                var id = $('#deleteId').text();
                   $('#delete').attr('data-dismiss', 'modal');
                   $.post('/konnectArea/delete/'+id, {'_token':$('input[name=_token]').val()}, function(data){
                     $('#response').text('Konnect area deleted successfully');
