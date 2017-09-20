@@ -51,8 +51,8 @@
             </span>
           </a>
           <ul class="treeview-menu">
-            <li><a href="{{ url('/viewMember') }}"><i class="fa fa-circle-o"></i> View All Members</a></li>
-            <li><a href="{{ url('/addMember') }}"><i class="fa fa-circle-o"></i> Add Members</a></li>
+            <li><a href="{{ url('/members/view') }}"><i class="fa fa-circle-o"></i> View All Members</a></li>
+            <li><a href="{{ url('/members/add') }}"><i class="fa fa-circle-o"></i> Add Members</a></li>
           </ul>
         </li>
         <li class="treeview {{ Request::path() == 'konnectArea/view' ? 'active' : '' }}  || {{ Request::path() == 'konnectArea/add' ? 'active' : '' }}">
@@ -63,8 +63,8 @@
             </span>
           </a>
           <ul class="treeview-menu">
-            <li class="{{ Request::path() == 'konnectArea/view' ? 'active' : '' }}"><a href="{{ url('/viewKonnectArea') }}"><i class="fa fa-circle-o"></i> View All Konnect Areas</a></li>
-            <li class="{{ Request::path() == 'konnectArea/add' ? 'active' : '' }}"><a href="{{ url('/addKonnectArea') }}"><i class="fa fa-circle-o"></i> Add Konnect Area</a></li>
+            <li class="{{ Request::path() == 'konnectArea/view' ? 'active' : '' }}"><a href="{{ url('/konnectArea/view') }}"><i class="fa fa-circle-o"></i> View All Konnect Areas</a></li>
+            <li class="{{ Request::path() == 'konnectArea/add' ? 'active' : '' }}"><a href="{{ url('/konnectArea/add') }}"><i class="fa fa-circle-o"></i> Add Konnect Area</a></li>
           </ul>
         </li>
         <li class="treeview">

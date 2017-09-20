@@ -16,7 +16,7 @@
 <!-- Main content -->
     <section class="content">
       <div class="row">
-        <div class="col-md-offset-3 col-md-6">
+        <div class="col-md-7">
           <div class="box">
             <div class="box-header with-border">
               <h3 class="box-title">Konnect Areas</h3>
@@ -27,7 +27,8 @@
               <table class="table table-bordered" id="allKonnectAreas">
                 <tr>
                   <th style="width: 10px">#</th>
-                  <th>Name</th>           
+                  <th>Name</th>   
+                  <th class="text-center" colspan="2">Action</th>        
                 </tr>
                 @foreach($konnectAreas as $konnectArea)
                     @if($konnectArea->isAdmin == 0)

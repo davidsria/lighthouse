@@ -14,6 +14,7 @@
 @section('content')
                   <div class="page-content">
                     <div id="tab-general">
+                        <div class="col-md-7">
                         <div class="box box-warning">
                             <div class="box-header with-border">
                             <h3 class="box-title">Attendance Form</h3>
@@ -28,7 +29,7 @@
                                     <input type="radio" name="optionsRadios" id="optionsRadios1" value="option1" checked>
                                     Yes
                                     </label>
-                                    &nbsp
+                                    &nbsp;
                                     <label> 
                                     <input type="radio" name="optionsRadios" id="optionsRadios2" value="option2">
                                     No
@@ -48,7 +49,7 @@
 
                                 <div class="form-group">
                                 <label>Date</label>
-                                <input type="text" class="form-control" placeholder="Enter ..." >
+                                <input type="date" class="form-control" placeholder="Enter ..." >
                                 </div>
 
                                 <div class="form-group">
@@ -73,17 +74,17 @@
 
                                 <div class="form-group">
                                 <label>No of Men</label>
-                                <input type="text" class="form-control" placeholder="Enter ..." >
+                                <input type="number" class="form-control" placeholder="Enter ..." >
                                 </div>
 
                                 <div class="form-group">
                                 <label>No of Women </label>
-                                <input type="text" class="form-control" placeholder="Enter ..." >
+                                <input type="number" class="form-control" placeholder="Enter ..." >
                                 </div>
 
                                 <div class="form-group">
                                 <label>No of Children</label>
-                                <input type="text" class="form-control" placeholder="Enter ..." >
+                                <input type="number" class="form-control" placeholder="Enter ..." >
                                 </div>
 
                                 <div class="box-footer">
@@ -95,6 +96,8 @@
                             </div>
                             <!-- /.box-body -->
                         </div>
+                        </div>
+                        <div class="clearfix"></div>
                     </div>
                 </div>             
 @endsection
