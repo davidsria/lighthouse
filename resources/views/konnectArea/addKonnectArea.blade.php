@@ -30,6 +30,15 @@
                 {{Session::get('areaResponse')}}
               </div>
             @endif
+            @if ($errors->any())
+              <div class="alert alert-danger">
+                <ul>
+                  @foreach ($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                  @endforeach
+                </ul>
+              </div>
+            @endif
              <form role="form" method="post" action="{{url('/konnectArea/add')}}">
               <div class="box-body">
                 <div class="form-group">
@@ -59,6 +68,15 @@
              @if(Session::has('centerResponse'))
               <div class="alert alert-success" role="alert">
                 {{Session::get('centerResponse')}}
+              </div>
+            @endif
+            @if ($errors->any())
+              <div class="alert alert-danger">
+                <ul>
+                  @foreach ($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                  @endforeach
+                </ul>
               </div>
             @endif
              <form role="form" method="post" action="{{url('/konnectCenter/add')}}">
@@ -108,6 +126,15 @@
                 {{Session::get('geographicalResponse')}}
               </div>
             @endif
+            @if ($errors->any())
+              <div class="alert alert-danger">
+                <ul>
+                  @foreach ($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                  @endforeach
+                </ul>
+              </div>
+            @endif
              <form class="form-horizontal" role="form" method="post" action="{{url('/geographicalName/add')}}">
               {{ csrf_field() }}
               <div class="box-body">
@@ -155,6 +182,15 @@
                 {{Session::get('pastorResponse')}}
               </div>
             @endif
+            @if ($errors->any())
+              <div class="alert alert-danger">
+                <ul>
+                  @foreach ($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                  @endforeach
+                </ul>
+              </div>
+            @endif
              <form role="form" method="post" action="{{url('/konnectPastor/add')}}">
               {{ csrf_field() }}
                 <!-- text input -->
@@ -179,10 +215,6 @@
                 <div class="form-group">
                   <button type="submit" class="btn btn-primary">Add</button>
                 </div>
-                
-
-                
-
               </form>
             </div>
             <!-- /.box-body -->

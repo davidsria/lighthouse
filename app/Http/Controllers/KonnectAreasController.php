@@ -22,6 +22,10 @@ class KonnectAreasController extends Controller
     }
 
     protected function create(Request $request){
+       $this->validate($request, [
+        'name' => 'required|max:100',
+        'password' => 'required',
+        ]); 
        if(User::create([
            'name' => $request->name,
            'password' => bcrypt($request->password),

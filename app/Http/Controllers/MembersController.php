@@ -9,6 +9,7 @@ use Session;
 use App\GeographicalName;
 use Excel;
 use Carbon\Carbon; 
+use Illuminate\Foundation\Validation\ValidatesRequests;
 
 class MembersController extends Controller
 {
@@ -56,6 +57,16 @@ class MembersController extends Controller
 
     /* insert to database a member */
     public function create(Request $request){
+        $this->validate($request, [
+        'name' => 'required|max:100',
+        'email' => 'required',
+        'geographicalName_id' => 'required',
+        'sex' => 'required|max:6',
+        'status' => 'required|max:8',
+        'telephone' => 'required|max:20',
+        'address' => 'required',
+        ]);
+
        if(Member::create([
            'geographicalName_id' => $request['geographicalName_id'],
            'name' => $request['name'],
@@ -128,7 +139,7 @@ class MembersController extends Controller
     }
 
     /* display the view */
-    public function print(){
+    public function printer(){
         $id = Auth::user()->id;
         $carbon_today = Carbon::today();
         $date = $carbon_today->format('d-m-Y');

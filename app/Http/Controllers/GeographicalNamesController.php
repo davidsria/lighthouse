@@ -17,6 +17,10 @@ class GeographicalNamesController extends Controller
     }
 
      protected function create(Request $request){
+       $this->validate($request, [
+        'name' => 'required|max:100',
+        'user_id' => 'required',
+        ]);   
        if(GeographicalName::create($request->all())){
            $response = 'successfully added';
        }else{

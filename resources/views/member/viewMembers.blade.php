@@ -75,9 +75,9 @@
       <div class="row no-print">
         <div class="col-xs-12">
           <a href="{{ route('printMembers') }}" target="_blank" class="btn btn-default"><i class="fa fa-print"></i> Print</a>
-          <button type="button" class="btn btn-primary pull-right" style="margin-right: 5px;">
+          <!--<button type="button" class="btn btn-primary pull-right" style="margin-right: 5px;">
             <i class="fa fa-download"></i> Generate Excel
-          </button>
+          </button>-->
         </div>
       </div>
       @endif

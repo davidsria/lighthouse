@@ -38,7 +38,7 @@
             <form method="post" action="{{url('/members/addMultiple')}}" enctype="multipart/form-data">
               <div class="form-group">
                 <label>Select xls file</label>
-                <input type="file" class="form-control" name="membersList" id="membersList">
+                <input type="file" class="form-control" name="membersList" id="membersList" required/>
               </div>
               <!-- /.form-group -->
               <div class="form-group" style="text-align:center;">
@@ -58,6 +58,15 @@
       <!-- /.box -->
      <form method="post" action="{{ url('members/add') }}"> 
       <div class="row">
+      @if ($errors->any())
+        <div class="alert alert-danger">
+          <ul>
+            @foreach ($errors->all() as $error)
+                <li>{{ $error }}</li>
+            @endforeach
+          </ul>
+      </div>
+    @endif
        @if(Session::has('memberResponse'))
               <div class="alert alert-success" role="alert">
                 {{Session::get('memberResponse')}}
@@ -79,7 +88,7 @@
                   <div class="input-group-addon">
                     <i class="fa fa-user"></i>
                   </div>
-                  <input type="text" name="name" id="name" class="form-control" data-inputmask="'alias': 'surname firstname othername'" data-mask>
+                  <input type="text" name="name" id="name" class="form-control" data-inputmask="'alias': 'surname firstname othername'" data-mask required/>
                 </div>
                 <!-- /.input group -->
               </div>
@@ -93,7 +102,7 @@
                   <div class="input-group-addon">
                     <i class="fa fa-envelope"></i>
                   </div>
-                  <input type="text" name="email" id="email" class="form-control">
+                  <input type="text" name="email" id="email" class="form-control" required/>
                 </div>
                 <!-- /.input group -->
               </div>
@@ -107,7 +116,7 @@
                   <div class="input-group-addon">
                     <i class="fa fa-phone"></i>
                   </div>
-                  <input type="text"  name="telephone" id="telephone" class="form-control">
+                  <input type="text"  name="telephone" id="telephone" class="form-control" required/>
                 </div>
                 <!-- /.input group -->
               </div>
@@ -121,7 +130,7 @@
                   <div class="input-group-addon">
                     <i class="fa fa-map-marker"></i>
                   </div>
-                  <input type="text" name="address" id="address" class="form-control">
+                  <input type="text" name="address" id="address" class="form-control" required/>
                 </div>
                 <!-- /.input group -->
               </div>
@@ -148,8 +157,8 @@
                 <label>Sex:</label>
 
                 <div class="input-group">
-                 <select class="form-control select2" name="sex" id="sex" style="width: 100%;">
-                    <option selected="selected">Select sex</option>
+                 <select class="form-control select2" name="sex" id="sex" style="width: 100%;" required/> 
+                    <option selected="selected" disabled>Select sex</option>
                     <option value="Male">Male</opption>
                     <option value="Female">Female</option>
                   </select>
@@ -163,8 +172,8 @@
                 <label>Status:</label>
 
                 <div class="input-group">
-                  <select class="form-control select2" name="status" id="status" style="width: 100%;">
-                    <option selected="selected">Select status</option>
+                  <select class="form-control select2" name="status" id="status" style="width: 100%;" required/>
+                    <option selected="selected" disabled>Select status</option>
                     <option value="Single">Single</opption>
                     <option value="Married">Married</option>
                     <option value="Divorced">Divorced</option>
@@ -217,8 +226,8 @@
          $.get('/geographicalName/'+id, function(data){
                     console.log(data);
                     console.log("Data length is "+data.length);
-                    var container = $("<select class='form-control select2' name='geographicalName_id' id='geographicalName_id' style='width: 100%;' />");
-                    container.append('<option>Select geographical area</option>');
+                    var container = $("<select class='form-control select2' name='geographicalName_id' id='geographicalName_id' style='width: 100%;' required/>");
+                    container.append("<option selected='selected' disabled>Select geographical area</option>");
                    $.each(data, function(key, value){
                         container.append($('<option>', {
                           value: value.id,

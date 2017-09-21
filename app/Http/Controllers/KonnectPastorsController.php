@@ -17,6 +17,10 @@ class KonnectPastorsController extends Controller
     }
     
     protected function create(Request $request){
+       $this->validate($request, [
+        'name' => 'required|max:100',
+        'user_id' => 'required',
+        ]);  
        if(KonnectPastor::create($request->all())){
             $response = 'successfully added';
        }else{

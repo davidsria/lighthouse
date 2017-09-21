@@ -23,7 +23,7 @@
     <!-- Main content -->
     <section class="content">
       <!-- Small boxes (Stat box) -->
-      @include('partials.notification')
+      @yield('notifications')
       <!-- /.row -->
       <!-- Main row -->
       @yield('content')

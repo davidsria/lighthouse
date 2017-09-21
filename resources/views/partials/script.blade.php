@@ -4,7 +4,6 @@
 <script>
   $.widget.bridge('uibutton', $.ui.button);
 </script>
-<script src="{{ URL::asset('js/jquery-2.2.4.min.js') }}"></script>
 <!-- Bootstrap 3.3.7 -->
 <script src="{{ URL::asset('bower_components/bootstrap/dist/js/bootstrap.min.js') }}"></script>
 <!-- Morris.js charts -->

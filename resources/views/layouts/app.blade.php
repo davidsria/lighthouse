@@ -1,21 +1,26 @@
 <!DOCTYPE html>
 <html lang="{{ app()->getLocale() }}">
 <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-
-    <!-- CSRF Token -->
-    <meta name="csrf-token" content="{{ csrf_token() }}">
-
-    <title>Lighthouse_connect</title>
-
-    <!-- Styles -->
-    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+@include('partials.head')
 </head>
+<body class="hold-transition skin-blue sidebar-mini">
+<header class="main-header">
+<a href="#" class="logo">
+    <!-- mini logo for sidebar mini 50x50 pixels -->
+    <span class="logo-mini"><b>L</b>K</span>
+    <!-- logo for regular state and mobile devices -->
+    <span class="logo-lg"><img src="/images/LIGHTHOUSE-LOGO.PNG" alt=""></span>
+  </a>
+  <!-- Header Navbar: style can be found in header.less -->
+  <nav class="navbar navbar-static-top">
+    <!-- Sidebar toggle button-->
+    <a href="#" class="sidebar-toggle" data-toggle="push-menu" role="button">
+      <span class="sr-only">Toggle navigation</span>
+    </a>
+  </nav>
+</header>
 <body>
     <div id="app">
-        @include('layouts.navbar')
 
         @yield('content')
     </div>
