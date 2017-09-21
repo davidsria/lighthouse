@@ -11,16 +11,17 @@ class KonnectCenterController extends Controller
     //
 
     public function store(Request $request){
-        $response = $this->create($request);
+        $response = $this->preStore($request);
         Session::flash('centerResponse', $response);
         return redirect('/konnectArea/add');
     }
     
-    protected function create(Request $request){
+    protected function preStore(Request $request){
        $this->validate($request, [
         'name' => 'required|max:100',
         'user_id' => 'required',
         ]);  
+
        if(KonnectCenter::create($request->all())){
            $response = 'successfully added';
        }else{

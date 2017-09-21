@@ -58,15 +58,6 @@
       <!-- /.box -->
      <form method="post" action="{{ url('members/add') }}"> 
       <div class="row">
-      @if ($errors->any())
-        <div class="alert alert-danger">
-          <ul>
-            @foreach ($errors->all() as $error)
-                <li>{{ $error }}</li>
-            @endforeach
-          </ul>
-      </div>
-    @endif
        @if(Session::has('memberResponse'))
               <div class="alert alert-success" role="alert">
                 {{Session::get('memberResponse')}}
@@ -81,7 +72,7 @@
             
             <div class="box-body">
               <!-- Member name -->
-              <div class="form-group">
+              <div class="form-group {{ $errors->has('name') ? ' has-error' : '' }}">
                 <label>Fullname:</label>
 
                 <div class="input-group">
@@ -95,7 +86,7 @@
               <!-- /.form group -->
 
               <!-- Email -->
-              <div class="form-group">
+              <div class="form-group {{ $errors->has('email') ? ' has-error' : '' }}">
                 <label>Email:</label>
 
                 <div class="input-group">
@@ -109,7 +100,7 @@
               <!-- /.form group -->
 
               <!-- phone mask -->
-              <div class="form-group">
+              <div class="form-group {{ $errors->has('telephone') ? ' has-error' : '' }}">
                 <label>Telephone:</label>
 
                 <div class="input-group">
@@ -123,7 +114,7 @@
               <!-- /.form group -->
 
               <!-- IP mask -->
-              <div class="form-group">
+              <div class="form-group {{ $errors->has('address') ? ' has-error' : '' }}">
                 <label>Address:</label>
 
                 <div class="input-group">
@@ -153,7 +144,7 @@
             </div>
             <div class="box-body">
               <!-- Date -->
-              <div class="form-group">
+              <div class="form-group {{ $errors->has('sex') ? ' has-error' : '' }}">
                 <label>Sex:</label>
 
                 <div class="input-group">
@@ -168,7 +159,7 @@
               <!-- /.form group -->
 
               <!-- Date range -->
-              <div class="form-group">
+              <div class="form-group {{ $errors->has('status') ? ' has-error' : '' }}">
                 <label>Status:</label>
 
                 <div class="input-group">
@@ -184,7 +175,7 @@
               <!-- /.form group -->
 
               <!-- Date and time range -->
-              <div class="form-group">
+              <div class="form-group {{ $errors->has('geographicalName_id') ? ' has-error' : '' }}">
                 <label>Geographical Name:</label>
 
                 <div class="input-group" id="addSelect">

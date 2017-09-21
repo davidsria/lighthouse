@@ -11,21 +11,31 @@ class KonnectAreasController extends Controller
     //
 
     public function index(){
+        $konnectAreas = User::latest('updated_at')->paginate(5);
+        return view('konnectArea.viewKonnectArea', compact('konnectAreas'));
+        
+    }
+
+
+     public function create(){
         $konnectAreas = User::all();
         return view('konnectArea.addKonnectArea', compact('konnectAreas'));
     }
 
+
     public function store(Request $request){
-        $response = $this->create($request);
+        $response = $this->preStore($request);
         Session::flash('areaResponse', $response);
         return redirect('/konnectArea/add');
     }
 
-    protected function create(Request $request){
+
+    protected function preStore(Request $request){
        $this->validate($request, [
         'name' => 'required|max:100',
         'password' => 'required',
         ]); 
+
        if(User::create([
            'name' => $request->name,
            'password' => bcrypt($request->password),
@@ -38,12 +48,8 @@ class KonnectAreasController extends Controller
        return $response;
     }
 
-    public function view(){
-        $konnectAreas = User::latest('updated_at')->paginate(5);
-        return view('konnectArea.viewKonnectArea', compact('konnectAreas'));
-    }
 
-    public function delete($id){
+    public function destroy($id){
         $konnectArea = User::find($id);
         $konnectArea->delete();
     }

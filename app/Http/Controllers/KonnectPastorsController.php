@@ -11,12 +11,12 @@ class KonnectPastorsController extends Controller
     //
 
     public function store(Request $request){
-        $response = $this->create($request);
+        $response = $this->preStore($request);
         Session::flash('pastorResponse', $response);
         return redirect('/konnectArea/add');
     }
     
-    protected function create(Request $request){
+    protected function preStore(Request $request){
        $this->validate($request, [
         'name' => 'required|max:100',
         'user_id' => 'required',
@@ -29,7 +29,7 @@ class KonnectPastorsController extends Controller
        return $response;
     }
 
-    public function getAll($id){
+    public function show($id){
         $result = KonnectPastor::where('user_id', $id)->get();
         return $result;
     }
