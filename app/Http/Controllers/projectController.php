@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Project;
 use Session;
 use Illuminate\Support\Facades\Auth;
+use Carbon\Carbon;
 
 class projectController extends Controller
 {
@@ -28,7 +29,8 @@ class projectController extends Controller
      */
     public function create()
     {
-        return view('project.new_project');
+        $date = Carbon::today()->format('d-m-Y');
+        return view('project.new_project',compact('date'));
     }
 
     /**

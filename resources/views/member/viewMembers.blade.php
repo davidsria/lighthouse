@@ -63,8 +63,8 @@
                     <span class="caret"></span>
                   </button>
                   <ul class="dropdown-menu">
-                    <li data-id="{{$member->id}}" data-name="{{$member->name}}" data-toggle="modal" data-target="#myModal" id="editMember"><a href="#">edit</a></li>
-                    <li data-id="{{$member->id}}" data-name="{{$member->name}}" data-toggle="modal" data-target="#myModal" id="deleteMember"><a href="#">remove</a></li>
+                    <li data-id="{{$member->id}}" data-name="{{$member->name}}" data-toggle="modal" data-target="#myModal" id="editMember"><a class="btn btn-primary" href="#">edit</a></li>
+                    <li data-id="{{$member->id}}" data-name="{{$member->name}}" data-toggle="modal" data-target="#myModal" id="deleteMember"><a class="btn btn-danger" href="#">remove</a></li>
                   </ul>
                 </td>       
             <tr>

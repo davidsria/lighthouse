@@ -1,79 +1,97 @@
 @extends('layouts.master')
-@section('title','View All Attendance')
+@section('title','View Attendance')
 @section('breadcrumb')
     <section class="content-header">
       <h1>
-        View All Attendance
+        View Attendance
       </h1>
       <ol class="breadcrumb">
         <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
-        <li class="active">View All Attendance</li>
+        <li>Attendance</li>
+        <li class="active">View Attendance</li>
       </ol>
     </section>
 @endsection
 @section('content')
-   <div class="page-content">
-                    <div id="tab-general">
-                        <div class="row mbl">
-                            <div class="col-lg-12">
-                                <div class="panel panel-blue">
-                                    <div class="panel-heading">Reports &nbsp <span><a href="/addAttend" class="button btn-default" style="background-color:orange;">Add Report <i class="fa fa-plus" aria-hidden="true">
-                                        <div class="icon-bg bg-blue"></div>
-                                        </i> </a></span>
-                                    </div>
-                                        <div class="panel-body">
-                                            <table class="table table-hover table-bordered table-responsive">
-                                                <thead>
-                                                <tr>
-                                                    <th>#</th>
-                                                    <th class="text-center">Date</th>
-                                                    <th class="text-center">Did Meetings Hold</th>
-                                                    <th class="text-center">Location</th>
-                                                    <th class="text-center">Konnect Pastor</th>
-                                                    <th class="text-center">Men</th>
-                                                    <th class="text-center">Women</th>
-                                                    <th class="text-center">Children</th>
-                                                    <th class="text-center">Highlights</th>
-                                                    <th class="text-center">No of Guest</th>
-                                                    <th class="text-center">Guest Details</th>
-                                                </tr>
-                                                </thead>
-                                                <tbody>
-                                                <tr>
-                                                    <td>1</td>
-                                                    <td>09/13/2017</td>
-                                                    <td>Yes</td>
-                                                    <td>Church</td>
-                                                    <td>Giwa Kehinde</td>
-                                                    <td>13</td>
-                                                    <td>9</td>
-                                                    <td>5</td>
-                                                    <td>Kingdom Steward</td>
-                                                    <td>Null</td>
-                                                    <td>Null</td>
-                                                </tr>
+ <!-- Main content -->
+    <section class="invoice">
+      <!-- title row -->
+      <div class="row">
+        <div class="col-xs-12">
+          <h2 class="page-header">
+            <i class="fa fa-globe"></i> {{ Auth::user()->name}}&nbsp;Konnect Area
+            <small class="pull-right">Date: {{ $date }}</small>
+          </h2>
+        </div>
+        <!-- /.col -->
+      </div>
+      <!-- info row -->
+      
+      <!-- /.row -->
 
-                                                <tr>
-                                                    <td>2</td>
-                                                    <td>active</td>
-                                                    <td>success</td>
-                                                    <td>warning</td>
-                                                    <td>danger</td>
-                                                    <td>active</td>
-                                                    <td>success</td>
-                                                    <td>warning</td>
-                                                    <td>danger</td>
-                                                    <td>active</td>
-                                                    <td>success</td>
-                                                </tr>
+      <!-- Table row -->
+      <div class="row">
+      <div id="response" style="display:none;"></div>
+      @if($attendances->isEmpty())
+        No Attendance uploaded yet
+      @else
+        <div class="col-xs-12 table-responsive" id="membersList">
+          <table class="table table-hover table-bordered">
+            <thead>
+            <tr class="text-center">
+              <th>Date</th>
+              <th>Meeting Hold</th>
+              <th>Location</th>
+              <th>Start Time</th>
+              <th>Duration</th>
+              <th>Hightlights</th>
+              <th>Guests</th>
+              <th>Guest Details</th>
+              <th>Men</th>
+              <th>Women</th>
+              <th>Children</th>
+            </tr>
+            </thead>
+            <tbody>
+            @foreach($attendances as $attendance)
+            <tr>
+                <td>{{ $attendance->date }}</td>
+                <td>{{ $attendance->meeting_hold }}</td>
+                <td>{{ $attendance->location }}</td>
+                <td>{{ $attendance->start_time }}</td>
+                <td>{{ $attendance->duration }}</td>
+                <td>{{ $attendance->highlights }}</td>
+                <td>{{ $attendance->guest }}</td>
+                <td>{{ $attendance->guest_details }}</td>
+                <td>{{ $attendance->men }}</td>
+                <td>{{ $attendance->women }}</td>
+                <td>{{ $attendance->children }}</td>   
+            <tr>
+            @endforeach
+            </tbody>
+          </table>
+        </div>
+        <!-- /.col -->
+      </div>
+      <!-- /.row -->
 
-                                                </tbody>
-                                            </table>
-                                        </div>
-                                    </div>
-                                </div>    
-                            </div> 
-                        </div>
-                    </div>
-                </div>            
+      
+      <!-- this row will not appear when printing -->
+      <div class="row no-print">
+        <div class="col-xs-12">
+          <a href="{{ route('printAttendance') }}" target="_blank" class="btn btn-default"><i class="fa fa-print"></i> Print</a>
+          <!--<button type="button" class="btn btn-primary pull-right" style="margin-right: 5px;">
+            <i class="fa fa-download"></i> Generate Excel
+          </button>-->
+        </div>
+      </div>
+
+      @endif
+    </section>
+    <!-- /.content -->
+    <div class="clearfix"></div>
+  </div>
+  <!-- /.content-wrapper -->
+
+
 @endsection

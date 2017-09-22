@@ -6,8 +6,9 @@
         Add Attendance
       </h1>
       <ol class="breadcrumb">
-        <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
-        <li class="active">Add Attendance</li>
+      <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
+      <li>Attendance</li>
+      <li class="active">Add Attendance</li>
       </ol>
     </section>
 @endsection
@@ -18,11 +19,17 @@
                         <div class="box box-warning">
                             <div class="box-header with-border">
                             <h3 class="box-title">Attendance Form</h3>
+                            <small class="pull-right">Date: {{ $date }}</small>
                             </div>
                             <!-- /.box-header -->
                             <div class="box-body">
                             <form role="form" action="{{url('addAttendance')}}" method="post">
                             {{ csrf_field() }}
+                                @if(Session::has('attendanceResponse'))
+                                    <div class="alert alert-success" role="alert">
+                                        {{Session::get('attendanceResponse')}}
+                                    </div>
+                                @endif
                                 <div class="form-group">
                                     <label>Did Meeting Hold</label>
                                 <div class="radio">
@@ -45,7 +52,7 @@
 
                                 <div class="form-group {{ $errors->has('date') ? ' has-error' : '' }}">
                                 <label>Date</label>
-                                <input type="date" class="form-control" name="date" placeholder="Enter ..." >
+                                <input type="date" class="form-control" name="date"  >
                                 </div>
 
                                 <div class="form-group {{ $errors->has('start_time') ? ' has-error' : '' }}">

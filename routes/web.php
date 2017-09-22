@@ -16,9 +16,10 @@ Route::get('/logout', 'Auth\LoginController@logout');
 
 Route::get('/', 'HomeController@index')->name('dashboard');;
 
-Route::get('/viewAttendance', 'AttendanceReportController@index');
-Route::get('/addAttendance', 'AttendanceReportController@create');
-Route::post('/addAttendance', 'AttendanceReportController@store');
+Route::get('/viewAttendance', 'AttendanceController@index');
+Route::get('/addAttendance', 'AttendanceController@create');
+Route::post('/addAttendance', 'AttendanceController@store');
+Route::get('/Attendance/print', 'AttendanceController@printer')->name('printAttendance');
 
 Route::get('/viewProject', 'projectController@index');
 Route::get('/addProject', 'projectController@create');
