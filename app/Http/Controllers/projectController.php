@@ -3,12 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-<<<<<<< HEAD
-=======
 use App\Project;
 use Session;
 use Illuminate\Support\Facades\Auth;
->>>>>>> b65a336fc4e004b145c4075967014a585404c332
 
 class projectController extends Controller
 {
@@ -19,13 +16,9 @@ class projectController extends Controller
      */
     public function index()
     {
-<<<<<<< HEAD
-        return view('project.view_project');
-=======
          $id = Auth::user()->id;
         $projects = Project::where('user_id', $id)->get();
         return view('project.view_project', compact('projects'));
->>>>>>> b65a336fc4e004b145c4075967014a585404c332
     }
 
     /**
@@ -83,11 +76,8 @@ class projectController extends Controller
     public function show($id)
     {
         //
-<<<<<<< HEAD
-=======
         $project = Project::where('id', $id)->get();
         return $project;
->>>>>>> b65a336fc4e004b145c4075967014a585404c332
     }
 
     /**
@@ -111,11 +101,8 @@ class projectController extends Controller
     public function update(Request $request, $id)
     {
         //
-<<<<<<< HEAD
-=======
         $project = Project::find($id);
         $project->update($request->all());
->>>>>>> b65a336fc4e004b145c4075967014a585404c332
     }
 
     /**
@@ -127,8 +114,6 @@ class projectController extends Controller
     public function destroy($id)
     {
         //
-<<<<<<< HEAD
-=======
         $project = Project::find($id);
         $project->delete();
     }
@@ -140,6 +125,5 @@ class projectController extends Controller
             'July', 'August', 'September', 'October', 'November', 'December',
         ];
         $explodedDate = explode('-', $date);
->>>>>>> b65a336fc4e004b145c4075967014a585404c332
     }
 }
