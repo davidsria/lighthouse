@@ -17,7 +17,7 @@
             <i class="fa fa-dashboard"></i> <span>Dashboard</span>
           </a>
         </li>
-        <li class="treeview">
+        <li class="treeview  {{ Request::path() == 'viewAttendance' ? 'active' : '' }} ||  {{ Request::path() == 'addAttendance' ? 'active' : '' }}">
           <a href="#">
             <i class="fa fa-vcard-o"></i>
             <span>Attendance</span>
@@ -30,7 +30,7 @@
             <li><a href="{{ url('/addAttendance') }}"><i class="fa fa-circle-o"></i> Add Attendance</a></li>
           </ul>
         </li>
-        <li class="treeview">
+        <li class="treeview {{ Request::path() == 'viewProject' ? 'active' : '' }} || {{ Request::path() == 'addProject' ? 'active' : '' }}">
           <a href="#">
             <i class="fa fa-building"></i>
             <span>Projects</span>
@@ -67,8 +67,8 @@
             <li class="{{ Request::path() == 'konnectArea/add' ? 'active' : '' }}"><a href="{{ url('/konnectArea/add') }}"><i class="fa fa-circle-o"></i> Add Konnect Area</a></li>
           </ul>
         </li>
-        <li class="treeview">
-          <a href="#">
+        <li class="{{ Request::path() == 'viewReport' ? 'active' : '' }}">
+          <a href="{{ url('/viewReport') }}">
             <i class="fa fa-book"></i> <span>Reports</span>
           </a>
         </li>

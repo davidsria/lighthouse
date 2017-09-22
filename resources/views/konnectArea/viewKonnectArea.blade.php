@@ -27,17 +27,22 @@
               <table class="table table-bordered" id="allKonnectAreas">
                 <tr>
                   <th style="width: 10px">#</th>
-                  <th>Name</th>   
-                  <th class="text-center" colspan="2">Action</th>        
+                  <th>Name</th>        
                 </tr>
                 @foreach($konnectAreas as $konnectArea)
                     @if($konnectArea->isAdmin == 0)
                         <tr>
                             <td>{{$konnectArea->id}}</td>
                             <td>{{$konnectArea->name}}</td>
-                            <td style="width: 1px"><button class="btn btn-primary btn-xs" data-id="{{$konnectArea->id}}" data-createdAt="{{$konnectArea->created_at}}" data-updatedAt="{{$konnectArea->updated_at}}" data-name="{{$konnectArea->name}}" data-toggle="modal" data-target="#myModal" id="viewArea">View</button></td>
-                            <!--<td style="width: 1px"><button class="btn btn-warning btn-xs" data-id="{{$konnectArea->id}}" data-name="{{$konnectArea->name}}" data-toggle="modal" data-target="#myModal" id="editArea">Edit</button></td>-->
-                            <td style="width: 1px"><button class="btn btn-danger btn-xs" data-id="{{$konnectArea->id}}" data-name="{{$konnectArea->name}}" data-toggle="modal" data-target="#myModal" id="deleteArea">Delete</button></td>
+                            <td class="dropdown" style="width:2px;">
+                              <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">action
+                                <span class="caret"></span>
+                              </button>
+                              <ul class="dropdown-menu">
+                                <li data-id="{{$konnectArea->id}}" data-createdAt="{{$konnectArea->created_at}}" data-updatedAt="{{$konnectArea->updated_at}}" data-name="{{$konnectArea->name}}" data-toggle="modal" data-target="#myModal" id="viewArea"><a href="#">view</a></li>
+                                <li data-id="{{$konnectArea->id}}" data-name="{{$konnectArea->name}}" data-toggle="modal" data-target="#myModal" id="deleteArea"><a href="#">remove</a></li>
+                              </ul>
+                            </td>
                         </tr>
                     @endif
                 @endforeach

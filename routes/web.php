@@ -23,29 +23,32 @@ Route::post('/addAttendance', 'AttendanceReportController@store');
 Route::get('/viewProject', 'projectController@index');
 Route::get('/addProject', 'projectController@create');
 Route::post('/addProject', 'projectController@store');
+Route::post('/project/delete/{id}', 'projectController@destroy');
+Route::get('/project/{id}', 'projectController@show');
+Route::post('/project/update/{id}', 'projectController@update');
 
 
-Route::get('/members/view', 'MembersController@view')->name('viewMembers');
-Route::get('/members/add', 'MembersController@index')->name('addMember');
+Route::get('/members/view', 'MembersController@index')->name('viewMembers');
+Route::get('/members/add', 'MembersController@create')->name('addMember');
 Route::post('/members/add', 'MembersController@store');
-Route::get('/members/print', 'MembersController@print')->name('printMembers');
-Route::post('/members/addMultiple', 'MembersController@generate');
-Route::post('/member/delete/{id}', 'MembersController@delete');
+Route::get('/members/print', 'MembersController@printer')->name('printMembers');
+Route::post('/members/addMultiple', 'MembersController@multipleMembers');
+Route::post('/member/delete/{id}', 'MembersController@destroy');
 Route::post('member/update/{id}', 'MembersController@update');
-Route::get('/members/{id}', 'MembersController@getAll');
-Route::get('/member/{id}', 'MembersController@getMember');
+Route::get('/members/{id}', 'MembersController@show');
+Route::get('/member/{id}', 'MembersController@showMember');
 
-Route::get('/konnectArea/view', 'KonnectAreasController@view')->name('viewKonnectArea');
-Route::get('/konnectArea/add', 'KonnectAreasController@index')->name('addKonnectArea');
+Route::get('/konnectArea/view', 'KonnectAreasController@index')->name('viewKonnectArea');
+Route::get('/konnectArea/add', 'KonnectAreasController@create')->name('addKonnectArea');
 Route::post('/konnectArea/add', 'KonnectAreasController@store');
-Route::post('/konnectArea/delete/{id}', 'KonnectAreasController@delete');
+Route::post('/konnectArea/delete/{id}', 'KonnectAreasController@destroy');
 
 Route::post('/konnectCenter/add', 'KonnectCenterController@store');
 
-Route::get('/konnectPastor/{id}', 'KonnectPastorsController@getAll');
+Route::get('/konnectPastor/{id}', 'KonnectPastorsController@show');
 Route::post('/konnectPastor/add', 'KonnectPastorsController@store');
 
-Route::get('/geographicalName/{id}', 'GeographicalNamesController@getAll');
+Route::get('/geographicalName/{id}', 'GeographicalNamesController@show');
 Route::post('/geographicalName/add', 'GeographicalNamesController@store');
 
 

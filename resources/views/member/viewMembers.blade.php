@@ -58,9 +58,15 @@
                 <td>{{ $member->address }}</td>
                 <td>{{ $member->status }}</td>
                 <td>{{ $member->geographicalName_id }}</td>
-                <td style="width: 1px"><button class="btn btn-warning btn-xs" data-id="{{$member->id}}" data-name="{{$member->name}}" data-toggle="modal" data-target="#myModal" id="editMember">Edit</button></td>
-                <td style="width: 1px"><button class="btn btn-danger btn-xs" data-id="{{$member->id}}" data-name="{{$member->name}}" data-toggle="modal" data-target="#myModal" id="deleteMember">Remove</button></td>
-                       
+                <td class="dropdown" style="width:1px;">
+                  <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">action
+                    <span class="caret"></span>
+                  </button>
+                  <ul class="dropdown-menu">
+                    <li data-id="{{$member->id}}" data-name="{{$member->name}}" data-toggle="modal" data-target="#myModal" id="editMember"><a href="#">edit</a></li>
+                    <li data-id="{{$member->id}}" data-name="{{$member->name}}" data-toggle="modal" data-target="#myModal" id="deleteMember"><a href="#">remove</a></li>
+                  </ul>
+                </td>       
             <tr>
             @endforeach
             </tbody>
@@ -101,6 +107,7 @@
       <div id="deleteMessage" style="display:none;"></div>
       <span id="deleteId" style="display:none;"></span>
       <div class="container" id="editDisplay" style="display:none; width:100%;">
+      <span id="updateId" style="display:none;"></span>
         <div class="form-group">
             <input type="text" class="form-control" name="name" id="name">
         </div>
@@ -182,6 +189,7 @@
             $(document).on('click', '#editMember', function(event){
                 var name = $(this).data('name');
                 var id = $(this).data('id');
+                $('#updateId').text(id);
                 $('#saveChanges').attr('data-id', id);
                 $('#title').text('Update Member');
                 $('#deleteMessage').css('display', 'none');
@@ -215,7 +223,7 @@
                 var sex = $('#sex').val();
                 var status = $('#status').val();
                 var geographicalName_id =$('#geographicalname').val();
-                var id = $(this).data('id');
+                var id = $('#updateId').text();
                 if(name == "" || email == "" || address == "" || telephone == "" || geographicalName_id == "" || status == "" || sex == ""){
                   $('.error').html("<span style='color:red;'>All fields are required</span>");
                 }else{

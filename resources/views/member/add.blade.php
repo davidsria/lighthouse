@@ -38,7 +38,7 @@
             <form method="post" action="{{url('/members/addMultiple')}}" enctype="multipart/form-data">
               <div class="form-group">
                 <label>Select xls file</label>
-                <input type="file" class="form-control" name="membersList" id="membersList">
+                <input type="file" class="form-control" name="membersList" id="membersList" required/>
               </div>
               <!-- /.form-group -->
               <div class="form-group" style="text-align:center;">
@@ -72,56 +72,56 @@
             
             <div class="box-body">
               <!-- Member name -->
-              <div class="form-group">
+              <div class="form-group {{ $errors->has('name') ? ' has-error' : '' }}">
                 <label>Fullname:</label>
 
                 <div class="input-group">
                   <div class="input-group-addon">
                     <i class="fa fa-user"></i>
                   </div>
-                  <input type="text" name="name" id="name" class="form-control" data-inputmask="'alias': 'surname firstname othername'" data-mask>
+                  <input type="text" name="name" id="name" class="form-control" data-inputmask="'alias': 'surname firstname othername'" data-mask required/>
                 </div>
                 <!-- /.input group -->
               </div>
               <!-- /.form group -->
 
               <!-- Email -->
-              <div class="form-group">
+              <div class="form-group {{ $errors->has('email') ? ' has-error' : '' }}">
                 <label>Email:</label>
 
                 <div class="input-group">
                   <div class="input-group-addon">
                     <i class="fa fa-envelope"></i>
                   </div>
-                  <input type="text" name="email" id="email" class="form-control">
+                  <input type="text" name="email" id="email" class="form-control" required/>
                 </div>
                 <!-- /.input group -->
               </div>
               <!-- /.form group -->
 
               <!-- phone mask -->
-              <div class="form-group">
+              <div class="form-group {{ $errors->has('telephone') ? ' has-error' : '' }}">
                 <label>Telephone:</label>
 
                 <div class="input-group">
                   <div class="input-group-addon">
                     <i class="fa fa-phone"></i>
                   </div>
-                  <input type="text"  name="telephone" id="telephone" class="form-control">
+                  <input type="text"  name="telephone" id="telephone" class="form-control" required/>
                 </div>
                 <!-- /.input group -->
               </div>
               <!-- /.form group -->
 
               <!-- IP mask -->
-              <div class="form-group">
+              <div class="form-group {{ $errors->has('address') ? ' has-error' : '' }}">
                 <label>Address:</label>
 
                 <div class="input-group">
                   <div class="input-group-addon">
                     <i class="fa fa-map-marker"></i>
                   </div>
-                  <input type="text" name="address" id="address" class="form-control">
+                  <input type="text" name="address" id="address" class="form-control" required/>
                 </div>
                 <!-- /.input group -->
               </div>
@@ -144,12 +144,12 @@
             </div>
             <div class="box-body">
               <!-- Date -->
-              <div class="form-group">
+              <div class="form-group {{ $errors->has('sex') ? ' has-error' : '' }}">
                 <label>Sex:</label>
 
                 <div class="input-group">
-                 <select class="form-control select2" name="sex" id="sex" style="width: 100%;">
-                    <option selected="selected">Select sex</option>
+                 <select class="form-control select2" name="sex" id="sex" style="width: 100%;" required/> 
+                    <option selected="selected" disabled>Select sex</option>
                     <option value="Male">Male</opption>
                     <option value="Female">Female</option>
                   </select>
@@ -159,12 +159,12 @@
               <!-- /.form group -->
 
               <!-- Date range -->
-              <div class="form-group">
+              <div class="form-group {{ $errors->has('status') ? ' has-error' : '' }}">
                 <label>Status:</label>
 
                 <div class="input-group">
-                  <select class="form-control select2" name="status" id="status" style="width: 100%;">
-                    <option selected="selected">Select status</option>
+                  <select class="form-control select2" name="status" id="status" style="width: 100%;" required/>
+                    <option selected="selected" disabled>Select status</option>
                     <option value="Single">Single</opption>
                     <option value="Married">Married</option>
                     <option value="Divorced">Divorced</option>
@@ -175,7 +175,7 @@
               <!-- /.form group -->
 
               <!-- Date and time range -->
-              <div class="form-group">
+              <div class="form-group {{ $errors->has('geographicalName_id') ? ' has-error' : '' }}">
                 <label>Geographical Name:</label>
 
                 <div class="input-group" id="addSelect">
@@ -217,8 +217,8 @@
          $.get('/geographicalName/'+id, function(data){
                     console.log(data);
                     console.log("Data length is "+data.length);
-                    var container = $("<select class='form-control select2' name='geographicalName_id' id='geographicalName_id' style='width: 100%;' />");
-                    container.append('<option>Select geographical area</option>');
+                    var container = $("<select class='form-control select2' name='geographicalName_id' id='geographicalName_id' style='width: 100%;' required/>");
+                    container.append("<option selected='selected' disabled>Select geographical area</option>");
                    $.each(data, function(key, value){
                         container.append($('<option>', {
                           value: value.id,

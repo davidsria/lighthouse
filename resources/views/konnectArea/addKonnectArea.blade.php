@@ -32,11 +32,11 @@
             @endif
              <form role="form" method="post" action="{{url('/konnectArea/add')}}">
               <div class="box-body">
-                <div class="form-group">
+                <div class="form-group {{ $errors->has('name') ? ' has-error' : '' }}">
                   <label for="exampleInputEmail1">Konnect Area Name</label>
                   <input type="text" class="form-control" name="name" id="exampleInputEmail1" placeholder="Enter konnect area name" required/>
                 </div>
-                <div class="form-group">
+                <div class="form-group {{ $errors->has('password') ? ' has-error' : '' }}">
                   <label for="exampleInputPassword1">Password</label>
                   <input type="password" name="password" class="form-control" id="exampleInputPassword1" placeholder="Password" required/>
                 </div>
@@ -63,8 +63,8 @@
             @endif
              <form role="form" method="post" action="{{url('/konnectCenter/add')}}">
             <div class="box-body">
-              <select class="form-control" name="user_id">
-              <option>Select Konnect Area</option>
+              <select class="form-control{{ $errors->has('user_id') ? ' has-error' : '' }}" name="user_id" required/>
+              <option selected="selected" disabled>Select Konnect Area</option>
               @foreach($konnectAreas as $konnectArea)
                 @if($konnectArea->isAdmin == 0)
                   <option value="{{$konnectArea->id}}">{{$konnectArea->name}}</option>
@@ -73,7 +73,7 @@
               </select>
               <br>
               {{ csrf_field() }}
-              <input class="form-control" type="text" name="name" placeholder="Enter Konnect center" required/>
+              <input class="form-control {{ $errors->has('name') ? ' has-error' : '' }}" type="text" name="name" placeholder="Enter Konnect center" required/>
               <br>
               <button type="submit" name="addKonnectCenter" class="btn btn-primary">Add</button>
             </div>
@@ -111,22 +111,21 @@
              <form class="form-horizontal" role="form" method="post" action="{{url('/geographicalName/add')}}">
               {{ csrf_field() }}
               <div class="box-body">
-                <div class="form-group">
+                <div class="form-group {{ $errors->has('user_id') ? ' has-error' : '' }}">
                   <label for="inputEmail3" class="col-sm-2 control-label">Konnect Area</label>
 
                   <div class="col-sm-10">
-                    <select class="form-control" name="user_id">
-                        <option>Choose........</option>
+                    <select class="form-control" name="user_id" required/>
+                        <option selected="selected" disabled>Choose........</option>
                         @foreach($konnectAreas as $konnectArea)
                           @if($konnectArea->isAdmin == 0)
                             <option value="{{$konnectArea->id}}">{{$konnectArea->name}}</option>
                           @endif
                         @endforeach
-              </select>
                     </select>
                   </div>
                 </div>
-                <div class="form-group">
+                <div class="form-group {{ $errors->has('name') ? ' has-error' : '' }}">
                   <label for="inputPassword3" class="col-sm-2 control-label">Name</label>
 
                   <div class="col-sm-10">
@@ -158,16 +157,16 @@
              <form role="form" method="post" action="{{url('/konnectPastor/add')}}">
               {{ csrf_field() }}
                 <!-- text input -->
-                <div class="form-group">
+                <div class="form-group {{ $errors->has('name') ? ' has-error' : '' }}">
                   <label>Pastor Name</label>
                   <input type="text" name="name" class="form-control" placeholder="Enter Pastor Name" required/>
                 </div>
                 
                 <!-- select -->
-                <div class="form-group">
+                <div class="form-group {{ $errors->has('user_id') ? ' has-error' : '' }}">
                   <label>Konnect Area</label>
-                  <select class="form-control" name="user_id">
-                    <option>Choose........</option>
+                  <select class="form-control" name="user_id" required/>
+                    <option selected="selected" disabled>Choose........</option>
                     @foreach($konnectAreas as $konnectArea)
                       @if($konnectArea->isAdmin == 0)
                         <option value="{{$konnectArea->id}}">{{$konnectArea->name}}</option>
@@ -179,10 +178,6 @@
                 <div class="form-group">
                   <button type="submit" class="btn btn-primary">Add</button>
                 </div>
-                
-
-                
-
               </form>
             </div>
             <!-- /.box-body -->
