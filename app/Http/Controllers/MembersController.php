@@ -143,15 +143,17 @@ class MembersController extends Controller
                 }
             }
         }
-        /*return [$validMembers, $invalidMembers];*/
-    return $this->storeMultiple($validMembers);
+        return $this->storeMultiple([$validMembers, $invalidMembers]);
+    /*return $this->storeMultiple($validMembers);*/
     }
+
 
     /* to insert the members list into the database */
     public function storeMultiple(array $requests){
-        $number = count($requests);
-        foreach($requests as $request){
-            Member::create($request);
+        list($valids, $invalids) = $requests;
+        $number = count($valids);
+        foreach($valids as $valids){
+            Member::create($valids);
         }
         Session::flash('multipleResponse', $number.' members successfully added');
         return redirect('/members/add');
