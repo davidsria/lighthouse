@@ -12,8 +12,8 @@
       </div>
       <!-- sidebar menu: : style can be found in sidebar.less -->
       <ul class="sidebar-menu" data-widget="tree">
-        <li class=" {{ Request::path() == '/dashboard' ? 'active' : '' }} || {{ Request::path() == '/' ? 'active' : '' }}">
-          <a href="{{ route('dashboard') }}">
+        <li class="treeview {{ Request::path() == '/' ? 'active' : '' }}">
+          <a href="/">
             <i class="fa fa-dashboard"></i> <span>Dashboard</span>
           </a>
         </li>
@@ -26,8 +26,8 @@
             </span>
           </a>
           <ul class="treeview-menu">
-            <li class="{{ Request::path() == 'viewAttendance' ? 'active' : '' }}"><a href="{{ url('/viewAttendance') }}"><i class="fa fa-circle-o"></i> View All Attendance</a></li>
-            <li class="{{ Request::path() == 'addAttendance' ? 'active' : '' }}"><a href="{{ url('/addAttendance') }}"><i class="fa fa-circle-o"></i> Add Attendance</a></li>
+            <li><a href="{{ url('/viewAttendance') }}"><i class="fa fa-circle-o"></i> View All Attendance</a></li>
+            <li><a href="{{ url('/addAttendance') }}"><i class="fa fa-circle-o"></i> Add Attendance</a></li>
           </ul>
         </li>
         <li class="treeview {{ Request::path() == 'viewProject' ? 'active' : '' }} || {{ Request::path() == 'addProject' ? 'active' : '' }}">
@@ -39,11 +39,11 @@
             </span>
           </a>
           <ul class="treeview-menu">
-            <li class="{{ Request::path() == 'viewProject' ? 'active' : '' }}"><a href="{{ url('/viewProject') }}"><i class="fa fa-circle-o"></i> View All Projects</a></li>
-            <li class="{{ Request::path() == 'addProject' ? 'active' : '' }}"><a href="{{ url('/addProject') }}"><i class="fa fa-circle-o"></i> Add Project</a></li>
+            <li><a href="{{ url('/viewProject') }}"><i class="fa fa-circle-o"></i> View All Projects</a></li>
+            <li><a href="{{ url('/addProject') }}"><i class="fa fa-circle-o"></i> Add Project</a></li>
           </ul>
         </li>
-        <li class="treeview {{ Request::path() == 'members/add' ? 'active' : '' }} ||  {{ Request::path() == 'members/view' ? 'active' : '' }}">
+        <li class="treeview {{ Request::path() == 'members/add' ? 'active' : '' }}">
           <a href="#">
             <i class="fa fa-users"></i> <span>Members</span>
             <span class="pull-right-container">
@@ -51,8 +51,8 @@
             </span>
           </a>
           <ul class="treeview-menu">
-            <li class="{{ Request::path() == 'members/view' ? 'active' : '' }}"><a href="{{ url('/members/view') }}"><i class="fa fa-circle-o"></i> View All Members</a></li>
-            <li class="{{ Request::path() == 'members/add' ? 'active' : '' }}"><a href="{{ url('/members/add') }}"><i class="fa fa-circle-o"></i> Add Members</a></li>
+            <li><a href="{{ url('/members/view') }}"><i class="fa fa-circle-o"></i> View All Members</a></li>
+            <li><a href="{{ url('/members/add') }}"><i class="fa fa-circle-o"></i> Add Members</a></li>
           </ul>
         </li>
         <li class="treeview {{ Request::path() == 'konnectArea/view' ? 'active' : '' }}  || {{ Request::path() == 'konnectArea/add' ? 'active' : '' }}">

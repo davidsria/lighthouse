@@ -1,83 +1,122 @@
 @extends('layouts.master')
-@section('title','View All Attendance')
+@section('title','Add Project')
 @section('breadcrumb')
     <section class="content-header">
       <h1>
-        New Projects
+        Add Project
       </h1>
       <ol class="breadcrumb">
         <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
-        <li class="active">New Project</li>
+        <li>Projects</li>
+        <li class="active">Add Project</li>
       </ol>
     </section>
 @endsection
 @section('content')
-                <div class="page-content">
-                    <div id="tab-general">
-                        <div class="row mbl">
-                            <div class="col-lg-12">
-                                <div class="panel panel-blue">
-                                    <div class="panel-heading"> <h2>Add New Project </h2></div>
-                                        <div class="panel-body form-horizontal">
-                                        @if(Session::has('projectResponse'))
-                                            <div class="alert alert-success" role="alert">
-                                                {{Session::get('projectResponse')}}
-                                            </div>
-                                        @endif
-            
-                                            <form action="/addProject" method="POST">
-                                            {{ csrf_field() }}
-                                            <div class="row">
-
-                                                <div class="form-group {{ $errors->has('name') ? ' has-error' : '' }}">
-                                                    <label for="concept" class="col-sm-4 control-label"><b>Project Name</b></label>
-                                                        <div class="col-sm-8">
-                                                            <input type="text" class="form-control" id="name" name="name">
-                                                        </div>
-                                                </div>
-
-                                                <div class="form-group {{ $errors->has('description') ? ' has-error' : '' }}">
-                                                    <label for="concept" class="col-sm-4 control-label">Description</label>
-                                                        <div class="col-sm-8">
-                                                            <textarea name="description" id="description" cols="100%" rows="10"></textarea>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                
-                                                <div class="form-group {{ $errors->has('fund') ? ' has-error' : '' }}">
-                                                    <label for="concept" class="col-sm-4 control-label">Fund</label>
-                                                        <div class="col-sm-8">
-                                                            <input type="text" class="form-control" id="fund" name="fund">
-                                                        </div>
-                                                    </div>
-                                                </div>
-
-                                                <div class="form-group {{ $errors->has('execution_date') ? ' has-error' : '' }}">
-                                                    <label for="concept" class="col-sm-4 control-label">Execution Date</label>
-                                                        <div class="col-sm-8">
-                                                            <input type="date" class="form-control" id="execution_date" name="execution_date">
-                                                        </div>  
-                                                    </div>
-                                                </div>
-
-                                            </div>
-
-                                            <div class="form-group">
-                                                <div class="col-md-5 col-md-offset-7"> 
-                                                    <!--<button class="btn btn-default pull-right" style="background-color:#f60;">
-                                                    <span class="glyphicon glyphicon-repeat">Reset</span>
-                                                    </button>-->
-                                                    <button class="btn btn-primary pull-right save">
-                                                    <span class="glyphicon glyphicon-floppy-disk ">Save</span>
-                                                    </button>
-                                                </div>  
-                                            </div>
-                                        </form>
-                                    </div>
-                                </div>
-                            </div> 
+        <!-- Main content -->
+    <section class="content" id="mainContent">
+        <div class="page-content">
+            <div id="tab-general">
+                <div class="col-md-7">
+                    <div class="box box-warning">
+                        <div class="box-header with-border">
+                            <h3 class="box-title">Project Form</h3>
+                            <small class="pull-right">Date: {{ $date }}</small>
                         </div>
+                            <!-- /.box-header -->
+                        <div class="box-body">
+                            <form method="post" action="{{ url('/addProject') }}">
+                            {{ csrf_field() }}
+                            
+                            <div class="row">
+                            @if(Session::has('projectResponse'))
+                                    <div class="alert alert-success" role="alert">
+                                        {{Session::get('projectResponse')}}
+                                    </div>
+                                    @endif
+                                    
+                                <div class="col-md-6">
+                                    <div class="box-body">
+                                    <!-- Member name -->
+                                    <div class="form-group {{ $errors->has('name') ? ' has-error' : '' }}">
+                                        <label>Project Title:</label>
+
+                                        <div class="input-group">
+                                        <div class="input-group-addon">
+                                            <i class="fa fa-book"></i>
+                                        </div>
+                                        <input type="text" name="name" id="name" class="form-control" data-inputmask="'alias': 'name'" data-mask required/>
+                                        </div>
+                                        <!-- /.input group -->
+                                    </div>
+                                    <!-- /.form group -->
+
+                                    <!-- Email -->
+                                    <div class="form-group {{ $errors->has('description') ? ' has-error' : '' }}">
+                                        <label>Description:</label>
+
+                                        <div class="input-group">
+                                        <div class="input-group-addon">
+                                            <i class="fa fa-envelope"></i>
+                                        </div>
+                                        <textarea rows="3" name="description" id="description" class="form-control" required/></textarea>
+                                        </div>
+                                        <!-- /.input group -->
+                                    </div>
+                                    <!-- /.form group -->
+
+                                    <!-- phone mask -->
+                                    <div class="form-group {{ $errors->has('fund') ? ' has-error' : '' }}">
+                                        <label>Fund :</label>
+
+                                        <div class="input-group">
+                                        <div class="input-group-addon">
+                                            <i class="fa fa-money"></i>
+                                        </div>
+                                        <input type="text"  name="fund" id="fund" class="form-control" required/>
+                                        </div>
+                                        <!-- /.input group -->
+                                    </div>
+                                    <!-- /.form group -->
+
+                                    <!-- IP mask -->
+                                    <div class="form-group {{ $errors->has('execution_date') ? ' has-error' : '' }}">
+                                        <label>Execution Date :</label>
+
+                                        <div class="input-group">
+                                        <div class="input-group-addon">
+                                            <i class="fa fa-calendar"></i>
+                                        </div>
+                                        <input type="date" name="execution_date" id="execution_date" class="form-control" required/>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <div class="input-group">
+                                            <button type="submit" class="btn btn-primary pull-center">
+                                                Add 
+                                            </button>
+                                        </div>
+                                    </div>
+                                    <!-- /.form group -->
+
+                                    </div>
+                                    <!-- /.box-body -->
+                                </div>
+                                <!-- /.box -->
+
+                                <!-- iCheck -->
+                                
+                                <!-- /.box -->
+                                </div>
+                                <!-- /.col (right) -->
+                            </div>
+                            </form>
+                        </div>
+                            <!-- /.box-body -->
                     </div>
                 </div>
+                <div class="clearfix"></div>
+                </div>
             </div>
+    </section>            
 @endsection

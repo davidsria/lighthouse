@@ -14,13 +14,12 @@
 Auth::routes();
 Route::get('/logout', 'Auth\LoginController@logout');
 
-Route::get('/', 'HomeController@index');
+Route::get('/', 'HomeController@index')->name('dashboard');;
 
-Route::get('/dashboard', 'HomeController@index')->name('dashboard');
-
-Route::get('/viewAttendance', 'attendanceController@index');
-Route::get('/addAttendance', 'attendanceController@create');
-Route::post('/addAttendance', 'attendanceController@store');
+Route::get('/viewAttendance', 'AttendanceController@index');
+Route::get('/addAttendance', 'AttendanceController@create');
+Route::post('/addAttendance', 'AttendanceController@store');
+Route::get('/Attendance/print', 'AttendanceController@printer')->name('printAttendance');
 
 Route::get('/viewProject', 'projectController@index');
 Route::get('/addProject', 'projectController@create');
