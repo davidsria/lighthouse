@@ -18,6 +18,10 @@ class projectController extends Controller
     {
          $id = Auth::user()->id;
         $projects = Project::where('user_id', $id)->get();
+        foreach($projects as $project){
+            $execuDate = $project['execution_date'];
+            $project['execution_date'] = $this->formatDate($execuDate);
+        }
         return view('project.view_project', compact('projects'));
     }
 
@@ -125,5 +129,8 @@ class projectController extends Controller
             'July', 'August', 'September', 'October', 'November', 'December',
         ];
         $explodedDate = explode('-', $date);
+        $month = $dateArray[$explodedDate[1]-1];
+        $newDate = $month." ".$explodedDate[2].", ".$explodedDate[0];
+        return $newDate;
     }
 }
