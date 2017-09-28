@@ -56,6 +56,18 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
    
-    
+  <script>  
+    $(document).ready(function() {
+    $('#allattendance').DataTable( {
+        "scrollY":        '50vh',
+        "scrollX": true,
+        "scrollCollapse": true,
+        "paging":         true
+    } );
+} );
+</script>
 
+<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+<script src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/1.10.16/js/dataTables.bootstrap.min.js"></script>
 

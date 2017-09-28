@@ -54,5 +54,4 @@ Route::post('/geographicalName/add', 'GeographicalNamesController@store');
 
 
 Route::get('/viewReport', 'ReportsController@index');
-Route::get('/addReport', 'ReportsController@create');
-Route::post('/addReport', 'ReportsController@store');
+
