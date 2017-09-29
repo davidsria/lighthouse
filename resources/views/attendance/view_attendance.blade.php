@@ -36,9 +36,9 @@
         No Attendance uploaded yet
       @else
         <div class="col-xs-12 table-responsive" id="membersList">
-          <table class="table table-hover table-bordered">
+          <table class="table table-striped">
             <thead>
-            <tr class="text-center">
+            <tr>
               <th>Date</th>
               <th>Meeting Hold</th>
               <th>Location</th>
@@ -79,10 +79,9 @@
       <!-- this row will not appear when printing -->
       <div class="row no-print">
         <div class="col-xs-12">
-          <a href="{{ route('printAttendance') }}" target="_blank" class="btn btn-default"><i class="fa fa-print"></i> Print</a>
-          <!--<button type="button" class="btn btn-primary pull-right" style="margin-right: 5px;">
-            <i class="fa fa-download"></i> Generate Excel
-          </button>-->
+          <a href="{{ route('printAttendance') }}" target="_blank" class="btn btn-default">
+          <i class="fa fa-print"></i> Print</a>
+          </button>
         </div>
       </div>
 
@@ -90,7 +89,6 @@
     </section>
     <!-- /.content -->
     <div class="clearfix"></div>
-  </div>
   <!-- /.content-wrapper -->
 
 

@@ -12,21 +12,30 @@
     </section>
 @endsection
 @section('content')
-    <div class="page-content">
-                    <div id="tab-general">
-                        <div class="row mbl">
-                            <div class="col-lg-12">
-                                <div class="panel panel-blue">
-                                    <div class="panel-heading">Reports &nbsp <span><a href="/addProject" class="button btn-default" style="background-color:#f60;">Add New Project <i class="fa fa-plus" aria-hidden="true">
-                                        <div class="icon-bg bg-blue"></div>
-                                        </i> </a></span>
+     <!-- Main content -->
+                                    <section class="invoice">
+                                    <!-- title row -->
+                                    <div class="row">
+                                        <div class="col-xs-12">
+                                        <h2 class="page-header">
+                                            <i class="fa fa-globe"></i> {{ Auth::user()->name}}&nbsp;Konnect Area
+                                          
+                                        </h2>
+                                        </div>
+                                        <!-- /.col -->
                                     </div>
-                                    <div id="response" style="display:none;"></div>
-                                    @if($projects->isEmpty())
-                                        <label>No project found</label>
-                                    @else
-                                        <div class="panel-body" id="projectsList">
-                                            <table class="table table-hover table-bordered">
+                                    <!-- info row -->
+                                    
+                                    <!-- /.row -->
+
+                                    <!-- Table row -->
+                                    <div class="row">
+                                        <div id="response" style="display:none;"></div>
+                                            @if($projects->isEmpty())
+                                                No Project uploaded yet
+                                            @else
+                                        <div class="col-xs-12 table-responsive" id="membersList">
+                                            <table class="table table-striped">
                                                 <thead>
                                                 <tr>
                                                     <th>#</th>
@@ -59,14 +68,13 @@
 
                                                 </tbody>
                                             </table>
+                                            </div>
                                         </div>
                                         @endif
-                                    </div>
-                                </div>    
-                            </div> 
-                        </div>
-                    </div>
-                </div>
+                                    </section>
+                                    <!-- /.content -->
+                                <div class="clearfix"></div>
+                                <!-- /.content-wrapper -->
 
          <!-- Modal  -->
 <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" >
