@@ -57,7 +57,7 @@
 
                                 <div class="form-group {{ $errors->has('start_time') ? ' has-error' : '' }}">
                                 <label>Start Time</label>
-                                <input type="text" class="form-control" name="start_time" placeholder="Enter ..." >
+                                <input type="time" class="form-control" name="start_time" placeholder="Enter ..." >
                                 </div>
 
                                 <div class="form-group {{ $errors->has('duration') ? ' has-error' : '' }}">

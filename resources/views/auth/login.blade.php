@@ -1,3 +1,4 @@
+@section('title', 'Login')
 <!DOCTYPE html>
 <html>
 <head>

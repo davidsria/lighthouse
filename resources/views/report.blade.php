@@ -72,7 +72,7 @@
           <td>{{$attendance->children}}</td>
           <td>{{$attendance->total}}</td>
           <td>{{$attendance->start_time}}</td>
-          <td>END TIME</td> 
+          <td>{{$attendance->end_time}}</td> 
           <td>{{$attendance->duration}}</td>
           <td>{{$attendance->highlights}}</td>
           <td>{{$attendance->guest}}</td>
