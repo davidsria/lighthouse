@@ -27,11 +27,11 @@ class AttendanceController extends Controller
     }
 
     public function store(AddAttendance $request){
-
+        
         if(auth()->user()->submit(
             new Attendance(request()->all())
         )){
-            $response = 'successfully added';
+            $response = 'Successfully added';
         }
 
         Session::flash('attendanceResponse', $response);

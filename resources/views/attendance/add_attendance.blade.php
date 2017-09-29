@@ -34,12 +34,12 @@
                                     <label>Did Meeting Hold</label>
                                 <div class="radio">
                                     <label> 
-                                    <input type="radio" name="meeting_hold" id="optionsRadios1" value="yes" checked>
+                                    <input type="radio" name="meeting_hold" id="optionsRadios1" value="1" checked>
                                     Yes
                                     </label>
                                     &nbsp;
                                     <label> 
-                                    <input type="radio" name="meeting_hold" id="optionsRadios2" value="no">
+                                    <input type="radio" name="meeting_hold" id="optionsRadios2" value="0">
                                     No
                                     </label>
                                 </div>
