@@ -25,7 +25,8 @@ class AddAttendance extends FormRequest
     {
         return [
             'location'=>'required',
-            'date'=>'required',
+            'day'=>'required',
+            'report_id'=>'required',
             'start_time'=>'required',
             'duration'=>'required',
             'highlights'=>'required',

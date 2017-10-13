@@ -13,13 +13,24 @@ class CreateAttendancesTable extends Migration
      */
     public function up()
     {
+
+         Schema::create('reports', function (Blueprint $table) {
+            $table->increments('id');
+            $table->string('month');
+            $table->string('year');
+            $table->timestamps();
+        });
+
+
         Schema::create('attendances', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('user_id')->unsigned()->index();
                 $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->boolean('meeting_hold');
             $table->string('location');
-            $table->date('date');
+            $table->integer('report_id')->unsigned()->index();
+                $table->foreign('report_id')->references('id')->on('reports')->onDelete('cascade');
+            $table->integer('day');
             $table->string('start_time');
             $table->string('duration');
             $table->integer('men')->unsigned();
@@ -40,5 +51,6 @@ class CreateAttendancesTable extends Migration
     public function down()
     {
         Schema::dropIfExists('attendances');
+        Schema::dropIfExists('reports');
     }
 }

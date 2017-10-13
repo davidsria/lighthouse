@@ -54,4 +54,7 @@ Route::post('/geographicalName/add', 'GeographicalNamesController@store');
 
 
 Route::get('/viewReport', 'ReportsController@index');
-
+Route::get('/report/excel', 'ReportsController@exportExcel')->name('excelreport');
+Route::post('/report/activation', 'ReportsController@activate')->name('monthlyactivation');
+Route::post('/viewReport', 'ReportsController@index')->name('filterReport');
+Route::get('/excelReport', 'ReportsController@printExcel');

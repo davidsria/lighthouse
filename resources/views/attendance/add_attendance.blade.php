@@ -50,9 +50,21 @@
                                 <input type="text" class="form-control" name="location" placeholder="Enter ...">
                                 </div>
 
-                                <div class="form-group {{ $errors->has('date') ? ' has-error' : '' }}">
-                                <label>Date</label>
-                                <input type="date" class="form-control" name="date"  >
+                                <div class="container-fluid form-group {{ $errors->has('day') ? ' has-error' : '' }}">
+                                    <div class="row">
+                                        <div class="col-md-2">
+                                            <label>Day</label>
+                                            <input type="number" class="form-control" name="day" max="31" min="1">
+                                        </div>
+                                        <div class="col-md-6">
+                                            <label>Month/Year</label>
+                                            <select class="form-control" name="report_id">
+                                                @foreach($reports as $report)
+                                                <option value="{{$report->id}}">{{$report->month}},&nbsp;{{$report->year}}</option>
+                                                @endforeach
+                                            </select>
+                                        </div>
+                                    </div>
                                 </div>
 
                                 <div class="form-group {{ $errors->has('start_time') ? ' has-error' : '' }}">
