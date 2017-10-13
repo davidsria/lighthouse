@@ -67,3 +67,7 @@ Route::get('/report/excel', 'ReportsController@exportExcel')->name('excelreport'
 Route::post('/report/activation', 'ReportsController@activate')->name('monthlyactivation');
 Route::post('/viewReport', 'ReportsController@index')->name('filterReport');
 Route::get('/excelReport', 'ReportsController@printExcel');
+Route::get('/report/excel', 'ReportsController@exportExcel')->name('excelreport');
+Route::post('/report/activation', 'ReportsController@activate')->name('monthlyactivation');
+Route::post('/viewReport', 'ReportsController@index')->name('filterReport');
+Route::get('/excelReport', 'ReportsController@printExcel');

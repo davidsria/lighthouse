@@ -78,15 +78,6 @@ class ReportsController extends Controller
         return $names;
     }
 
-    private function getKonnectLeader($id){
-        $results = KonnectLeader::where('user_id', $id)->get();
-        $names = [];
-        foreach($results as $result){
-            $names[] = $result['name'];
-        }
-        return $names;
-    }
-
     private function get12HourFormat($start){
         $explodeStart = explode(':', $start);
         $startHour = $explodeStart[0];
