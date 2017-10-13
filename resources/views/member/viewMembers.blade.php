@@ -36,7 +36,7 @@
         No members uploaded yet
       @else
         <div class="col-xs-12 table-responsive" id="membersList">
-          <table class="table table-striped">
+          <table  class="table table-striped datatable">
             <thead>
             <tr>
               <th>Name</th>
@@ -45,7 +45,10 @@
               <th>Telephone</th>
               <th>Address</th>
               <th>Status</th>
+              <th>Birthday</th>
+              <th>Anniversary Date</th>
               <th>Geographical Name</th>
+              <th>Action</th>
             </tr>
             </thead>
             <tbody>
@@ -57,17 +60,16 @@
                 <td>{{ $member->telephone }}</td>
                 <td>{{ $member->address }}</td>
                 <td>{{ $member->status }}</td>
+                <td>{{ $member->birthday }}</td>
+                <td>{{ $member->anniversary }}</td>
                 <td>{{ $member->geographicalName_id }}</td>
-                <td class="dropdown" style="width:1px;">
-                  <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">action
-                    <span class="caret"></span>
-                  </button>
-                  <ul class="dropdown-menu">
-                    <li data-id="{{$member->id}}" data-name="{{$member->name}}" data-toggle="modal" data-target="#myModal" id="editMember"><a class="btn btn-primary" href="#">edit</a></li>
-                    <li data-id="{{$member->id}}" data-name="{{$member->name}}" data-toggle="modal" data-target="#myModal" id="deleteMember"><a class="btn btn-danger" href="#">remove</a></li>
+                <td>
+                  <ul style="list-style-type: none;margin: 0; padding: 0;">
+                    <li style="display: inline" data-id="{{$member->id}}" data-name="{{$member->name}}" data-toggle="modal" data-target="#myModal" id="editMember"><a class="btn btn-primary btn-xs" href="#">edit</a></li>
+                    <li style="display: inline" data-id="{{$member->id}}" data-name="{{$member->name}}" data-toggle="modal" data-target="#myModal" id="deleteMember"><a class="btn btn-danger btn-xs" href="#">Delete</a></li>
                   </ul>
-                </td>       
-            <tr>
+                </td>      
+            </tr>
             @endforeach
             </tbody>
           </table>

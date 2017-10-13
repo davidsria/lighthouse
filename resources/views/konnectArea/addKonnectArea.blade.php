@@ -50,8 +50,10 @@
             </form>
           </div>
           <!-- /.box -->
+        </div>
 
           <!-- Form Element sizes -->
+        <div class="col-md-6">
           <div class="box box-success">
             <div class="box-header with-border">
               <h3 class="box-title">Konnect Center</h3>
@@ -82,20 +84,14 @@
           </div>
           <!-- /.box -->
 
-
-          <!-- Form Element sizes -->
-          
-          <!-- /.box -->
-
-          
-          <!-- /.box -->
-
-          <!-- Input addon -->
-          
         </div>
+      </div>
+          
+        
         <!--/.col (left) -->
         <!-- right column -->
-        <div class="col-md-6">
+      <div class="row">
+        <div class="col-md-4">
           <!-- Horizontal Form -->
           <div class="box box-info">
             <div class="box-header with-border">
@@ -103,18 +99,22 @@
             </div>
             <!-- /.box-header -->
             <!-- form start -->
+            <div class="box-body">
             @if(Session::has('geographicalResponse'))
               <div class="alert alert-success" role="alert">
                 {{Session::get('geographicalResponse')}}
               </div>
             @endif
-             <form class="form-horizontal" role="form" method="post" action="{{url('/geographicalName/add')}}">
+              <form class="form" method="post" action="{{url('/geographicalName/add')}}">
               {{ csrf_field() }}
-              <div class="box-body">
-                <div class="form-group {{ $errors->has('user_id') ? ' has-error' : '' }}">
-                  <label for="inputEmail3" class="col-sm-2 control-label">Konnect Area</label>
 
-                  <div class="col-sm-10">
+                <div class="form-group {{ $errors->has('name') ? ' has-error' : '' }}">
+                  <label> Geographical Name</label>
+                  <input type="text" name="name" class="form-control" id="inputPassword3" placeholder="Geographic name" required/>
+                </div>
+                
+                <div class="form-group {{ $errors->has('user_id') ? ' has-error' : '' }}">
+                  <label>Konnect Area</label>
                     <select class="form-control" name="user_id" required/>
                         <option selected="selected" disabled>Choose........</option>
                         @foreach($konnectAreas as $konnectArea)
@@ -123,16 +123,8 @@
                           @endif
                         @endforeach
                     </select>
-                  </div>
                 </div>
-                <div class="form-group {{ $errors->has('name') ? ' has-error' : '' }}">
-                  <label for="inputPassword3" class="col-sm-2 control-label">Name</label>
-
-                  <div class="col-sm-10">
-                    <input type="text" name="name" class="form-control" id="inputPassword3" placeholder="Geographic name" required/>
-                  </div>
-                </div>
-                              </div>
+              </div>
               <!-- /.box-body -->
               <div class="box-footer">
                 <button type="submit" class="btn btn-primary">Add</button>
@@ -141,8 +133,10 @@
             </form>
           </div>
           <!-- /.box -->
+        </div>
 
           <!-- general form elements disabled -->
+        <div class="col-md-4">
           <div class="box box-warning">
             <div class="box-header with-border">
               <h3 class="box-title">Konnect Pastor</h3>
@@ -183,8 +177,49 @@
             <!-- /.box-body -->
           </div>
           <!-- /.box -->
-                  </div>
+        </div>
         <!--/.col (right) -->
+        <div class="col-md-4">
+          <div class="box box-danger">
+            <div class="box-header with-border">
+              <h3 class="box-title">Konnect Leader</h3>
+            </div>
+            <!-- /.box-header -->
+            <div class="box-body">
+              @if(Session::has('leaderResponse'))
+              <div class="alert alert-success" role="alert">
+                {{Session::get('leaderResponse')}}
+              </div>
+            @endif
+             <form role="form" method="post" action="{{url('/konnectleader/add')}}">
+              {{ csrf_field() }}
+                <!-- text input -->
+                <div class="form-group {{ $errors->has('name') ? ' has-error' : '' }}">
+                  <label>Pastor Name</label>
+                  <input type="text" name="name" class="form-control" placeholder="Enter Konnect Leader Name" required/>
+                </div>
+                
+                <!-- select -->
+                <div class="form-group {{ $errors->has('user_id') ? ' has-error' : '' }}">
+                  <label>Konnect Area</label>
+                  <select class="form-control" name="user_id" required/>
+                    <option selected="selected" disabled>Choose........</option>
+                    @foreach($konnectAreas as $konnectArea)
+                      @if($konnectArea->isAdmin == 0)
+                        <option value="{{$konnectArea->id}}">{{$konnectArea->name}}</option>
+                      @endif
+                    @endforeach
+                  </select>
+                </div>
+
+                <div class="form-group">
+                  <button type="submit" class="btn btn-primary">Add</button>
+                </div>
+              </form>
+            </div>
+            <!-- /.box-body -->
+          </div>
+        </div>
       </div>
       <!-- /.row -->
     </section>

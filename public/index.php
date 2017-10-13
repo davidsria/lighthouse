@@ -1,5 +1,7 @@
 <?php
 
+
+ini_set('max_execution_time', 300);
 /**
  * Laravel - A PHP Framework For Web Artisans
  *

@@ -82,6 +82,7 @@ class MembersController extends Controller
         'status' => 'required|max:8',
         'telephone' => 'required|max:20',
         'address' => 'required',
+        'birthday'=>'required',
         ]);
 
        if(Member::create([
@@ -92,6 +93,8 @@ class MembersController extends Controller
            'sex' => $request['sex'],
            'telephone' => $request['telephone'],
            'address' => $request['address'],
+           'birthday' => $request['birthday'],
+           'anniversary' => $request['anniversary'],
            'user_id' => Auth::user()->id,
            ])){
            $response = 'Member successfully added';

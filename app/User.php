@@ -32,8 +32,18 @@ class User extends Authenticatable
         return $this->hasMany(Attendance::class);
     }
 
+    public function firstTimer(){
+        
+        return $this->hasMany(firstTimers::class);
+    }
+
     public function submit(Attendance $attendance){
         
         $this->attendance()->save($attendance);
+    }
+
+    public function submitFirstTimer(firstTimers $firstTimers){
+        
+        $this->firstTimer()->save($firstTimers);
     }
 }

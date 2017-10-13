@@ -52,6 +52,18 @@ Route::post('/konnectPastor/add', 'KonnectPastorsController@store');
 Route::get('/geographicalName/{id}', 'GeographicalNamesController@show');
 Route::post('/geographicalName/add', 'GeographicalNamesController@store');
 
+Route::get('/konnectleader/{id}', 'KonnectLeaderController@show');
+Route::post('/konnectleader/add', 'KonnectLeaderController@store');
+
 
 Route::get('/viewReport', 'ReportsController@index');
 
+Route::get('/firsttimer/view', 'FirstTimersController@index');
+Route::get('/firsttimer/add', 'FirstTimersController@create');
+Route::post('/firsttimer/add', 'FirstTimersController@store');
+Route::get('/firsttimer/print', 'FirstTimersController@printer');
+
+Route::get('/report/excel', 'ReportsController@exportExcel')->name('excelreport');
+Route::post('/report/activation', 'ReportsController@activate')->name('monthlyactivation');
+Route::post('/viewReport', 'ReportsController@index')->name('filterReport');
+Route::get('/excelReport', 'ReportsController@printExcel');

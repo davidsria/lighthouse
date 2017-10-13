@@ -55,6 +55,12 @@
 <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.3/js/bootstrap.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+
+<!-- datatable script -->
+<script src="{{ URL::asset("dataTables/jquery-1.12.4.js")}}"></script>
+<script src="{{ URL::asset("dataTables/js/jquery.dataTables.min.js")}}"></script>
+<script src="{{ URL::asset("dataTables/js/dataTables.bootstrap.min.js")}}"></script>
    
   <script>  
     $(document).ready(function() {
@@ -64,10 +70,20 @@
         "scrollCollapse": true,
         "paging":         true
     } );
+
+    $('input:radio[name="meeting_hold"]').change(function() {
+    if ($(this).val() == 'no') {
+      $('.appended').appendTo('body');
+    } else {
+      $('.appended').remove();
+    }
+  });
+
 } );
 </script>
 
-<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
-<script src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
-<script src="https://cdn.datatables.net/1.10.16/js/dataTables.bootstrap.min.js"></script>
-
+<script>  
+    $(document).ready(function() {
+    $('.datatable').DataTable();
+} );
+</script>

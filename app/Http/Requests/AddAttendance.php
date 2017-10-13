@@ -24,14 +24,8 @@ class AddAttendance extends FormRequest
     public function rules()
     {
         return [
-            'location'=>'required',
             'date'=>'required',
-            'start_time'=>'required',
-            'duration'=>'required',
-            'highlights'=>'required',
-            'men'=>'required',
-            'women'=>'required',
-            'children'=>'required'
+            'meeting_hold'=>'required'
         ];
     }
 }

@@ -19,7 +19,9 @@
                         <div class="box box-warning">
                             <div class="box-header with-border">
                             <h3 class="box-title">Attendance Form</h3>
-                            <small class="pull-right">Date: {{ $date }}</small>
+                            <small class="pull-right">Date: {{ $date }}</small><br>
+                            <p><b>Note <samll style="color:red">*</samll> is required</b> </p>
+                            
                             </div>
                             <!-- /.box-header -->
                             <div class="box-body">
@@ -31,15 +33,15 @@
                                     </div>
                                 @endif
                                 <div class="form-group">
-                                    <label>Did Meeting Hold</label>
+                                    <label>Did Meeting Hold <samll style="color:red">*</samll></label>
                                 <div class="radio">
                                     <label> 
-                                    <input type="radio" name="meeting_hold" id="optionsRadios1" value="1" checked>
+                                    <input type="radio" name="meeting_hold" id="optionsRadios1" value="yes" checked>
                                     Yes
                                     </label>
                                     &nbsp;
                                     <label> 
-                                    <input type="radio" name="meeting_hold" id="optionsRadios2" value="0">
+                                    <input type="radio" name="meeting_hold" id="optionsRadios2" value="no">
                                     No
                                     </label>
                                 </div>
@@ -50,48 +52,60 @@
                                 <input type="text" class="form-control" name="location" placeholder="Enter ...">
                                 </div>
 
-                                <div class="form-group {{ $errors->has('date') ? ' has-error' : '' }}">
-                                <label>Date</label>
-                                <input type="date" class="form-control" name="date"  >
+                                <div class="container-fluid form-group {{ $errors->has('day') ? ' has-error' : '' }}">
+                                    <div class="row">
+                                        <div class="col-md-2">
+                                            <label>Day</label>
+                                            <input type="number" class="form-control" name="day" max="31" min="1">
+                                        </div>
+                                        <div class="col-md-6">
+                                            <label>Month/Year</label>
+                                            <select class="form-control" name="report_id">
+                                                @foreach($reports as $report)
+                                                <option value="{{$report->id}}">{{$report->month}},&nbsp;{{$report->year}}</option>
+                                                @endforeach
+                                            </select>
+                                        </div>
+                                    </div>
                                 </div>
 
                                 <div class="form-group {{ $errors->has('start_time') ? ' has-error' : '' }}">
                                 <label>Start Time</label>
-                                <input type="text" class="form-control" name="start_time" placeholder="Enter ..." >
+                                <input type="time" class="form-control" name="start_time" placeholder="Enter ..." >
                                 </div>
 
-                                <div class="form-group {{ $errors->has('duration') ? ' has-error' : '' }}">
-                                <label>Duration</label>
+                                <div class="appended form-group {{ $errors->has('duration') ? ' has-error' : '' }}">
+                                <label>Duration <samll style="color:red">*</samll></label>
                                 <input type="text" class="form-control" name="duration" placeholder="Enter ..." >
                                 </div>
 
-                                <div class="form-group">
+                                <div class=" appended form-group">
                                 <label>Highlights</label>
                                 <textarea class="form-control" rows="3" name="highlights" placeholder="Enter ..."></textarea>
                                 </div>
 
-                                <div class="form-group">
+                                <div class="appended form-group">
                                 <label>No of Guest</label>
                                 <input type="number" min='0' class="form-control" name="guest" placeholder="Enter ..." >
                                 </div>
 
-                                <div class="form-group">
+                                <div class="appended form-group">
                                 <label>Guest Details</label>
                                 <textarea class="form-control" rows="3" name="guest_details" placeholder="Enter ..."></textarea>
                                 </div>
 
-                                <div class="form-group {{ $errors->has('men') ? ' has-error' : '' }}">
-                                <label>No of Men</label>
+                                <div class="appended form-group {{ $errors->has('men') ? ' has-error' : '' }}">
+                                <label>No of Men <samll style="color:red">*</samll></label>
                                 <input type="number" min='0' class="form-control" name="men" placeholder="Enter ..." >
                                 </div>
 
-                                <div class="form-group {{ $errors->has('women') ? ' has-error' : '' }} ">
-                                <label>No of Women </label>
+                                <div class="appended form-group {{ $errors->has('women') ? ' has-error' : '' }} ">
+                                <label>No of Women <samll style="color:red">*</samll></label>
                                 <input type="number" min='0' class="form-control" name="women" placeholder="Enter ..." >
                                 </div>
 
-                                <div class="form-group {{ $errors->has('children') ? ' has-error' : '' }}">
-                                <label>No of Children</label>
+                                <div class="appended form-group {{ $errors->has('children') ? ' has-error' : '' }}">
+                                <label>No of Children <samll style="color:red">*</samll></label>
                                 <input type="number" min='0' class="form-control" name="children" placeholder="Enter ..." >
                                 </div>
 
@@ -107,5 +121,6 @@
                         </div>
                         <div class="clearfix"></div>
                     </div>
-                </div>             
+                </div>
+                          
 @endsection

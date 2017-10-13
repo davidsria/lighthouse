@@ -144,7 +144,8 @@
             </div>
             <div class="box-body">
               <!-- Date -->
-              <div class="form-group {{ $errors->has('sex') ? ' has-error' : '' }}">
+              <div class="row">
+              <div class=" col-md-3 form-group {{ $errors->has('sex') ? ' has-error' : '' }}">
                 <label>Sex:</label>
 
                 <div class="input-group">
@@ -159,7 +160,7 @@
               <!-- /.form group -->
 
               <!-- Date range -->
-              <div class="form-group {{ $errors->has('status') ? ' has-error' : '' }}">
+              <div class=" col-md-3 form-group {{ $errors->has('status') ? ' has-error' : '' }}">
                 <label>Status:</label>
 
                 <div class="input-group">
@@ -173,6 +174,30 @@
                 <!-- /.input group -->
               </div>
               <!-- /.form group -->
+
+              </div>
+
+            <div class="row">
+              <div class=" col-md-3 form-group {{ $errors->has('birthday') ? ' has-error' : '' }}">
+                <label>Birthday:</label>
+
+                <div class="input-group">
+                  <input type="date" name="birthday" id="birthday" class="form-control" />
+                </div>
+                <!-- /.input group -->
+              </div>
+
+              
+
+              <div class=" col-md-3 form-group">
+                <label>Anniversary Date:</label>
+
+                <div class="input-group">
+                  <input type="date" name="anniversary" id="anniversary" class="form-control" />
+                </div>
+                <!-- /.input group -->
+              </div>
+            </div>
 
               <!-- Date and time range -->
               <div class="form-group {{ $errors->has('geographicalName_id') ? ' has-error' : '' }}">

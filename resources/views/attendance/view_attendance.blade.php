@@ -35,8 +35,8 @@
       @if($attendances->isEmpty())
         No Attendance uploaded yet
       @else
-        <div class="col-xs-12 table-responsive" id="membersList">
-          <table class="table table-striped">
+        <div class="col-xs-12 table-responsive">
+          <table class="table table-striped datatable" width="1000px">
             <thead>
             <tr>
               <th>Date</th>

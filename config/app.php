@@ -163,11 +163,13 @@ return [
         Illuminate\Validation\ValidationServiceProvider::class,
         Illuminate\View\ViewServiceProvider::class,
 
+
         /*
          * Package Service Providers...
          */
         Laravel\Tinker\TinkerServiceProvider::class,
         Ultraware\Roles\RolesServiceProvider::class,
+        Barryvdh\Debugbar\ServiceProvider::class,
 
 
         
@@ -233,6 +235,7 @@ return [
         'View' => Illuminate\Support\Facades\View::class,
         'Excel' => Maatwebsite\Excel\Facades\Excel::class,
         'Carbon' => 'Carbon\Carbon',
+        'Debugbar' => Barryvdh\Debugbar\Facade::class,
 
     ],
 
