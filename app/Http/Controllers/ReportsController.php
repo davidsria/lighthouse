@@ -35,10 +35,9 @@ class ReportsController extends Controller
                 $attendance['konnect_center'] = $this->getKonnectCenter($attendance['user_id']);
                 $attendance['geographical_name'] = $this->getGeographicalNames($attendance['user_id']);
                 $attendance['konnect_pastor'] = $this->getKonnectPastors($attendance['user_id']);
-                $attendance['end_time'] =$this->get12HourFormat($this->getEndTime($attendance['start_time'], $attendance['duration']));
+                $attendance['end_time'] =$this->get12HourFormat($attendance['end_time']);
                 $attendance['start_time'] = $this->get12HourFormat($attendance['start_time']);
                 $attendance['user_id'] = $this->getUser($attendance['user_id']);
-                $attendance['meeting_hold'] = $this->getMeetingString($attendance['meeting_hold']);
                 $attendance['total'] = $attendance['men'] + $attendance['women'] + $attendance['children'];
             }
             $konnectAreas = User::all();
@@ -94,26 +93,6 @@ class ReportsController extends Controller
         return $time;
     }
 
-    private function getEndTime($start, $duration){
-        $explodeStart = explode(':', $start);
-        $explodeDuration = explode(':', $duration);
-        $startHour = $explodeStart[0];
-        $startMin = $explodeStart[1];
-        $durationHour = $explodeDuration[0];
-        $durationMin = $explodeDuration[1];
-        $endHour = $startHour + $durationHour;
-        $endMin = $startMin + $durationMin;
-        if($endMin > 59){
-            $getHour = 0;
-            $endHour += floor($endMin/60);
-            $endMin = $endMin%60;
-            $time = $endHour.':'.$endMin;
-        }else{
-            $time = $endHour.':'.$endMin;
-        }
-        return $time;
-    }
-
     public function exportExcel(Request $request){
         $report_id = $request['report_date'];
         $user_id = $request['area'];
@@ -138,10 +117,9 @@ class ReportsController extends Controller
             $attendance['konnect_center'] = $this->getKonnectCenter($attendance['user_id']);
             $attendance['geographical_name'] = $this->getGeographicalNames($attendance['user_id']);
             $attendance['konnect_pastor'] = $this->getKonnectPastors($attendance['user_id']);
-            $attendance['end_time'] =$this->get12HourFormat($this->getEndTime($attendance['start_time'], $attendance['duration']));
+            $attendance['end_time'] =$this->get12HourFormat($attendance['end_time']);
             $attendance['start_time'] = $this->get12HourFormat($attendance['start_time']);
             $attendance['user_id'] = $this->getUser($attendance['user_id']);
-            $attendance['meeting_hold'] = $this->getMeetingString($attendance['meeting_hold']);
             $attendance['total'] = $attendance['men'] + $attendance['women'] + $attendance['children'];
             /*to implode array with sub array*/
             $attendance['geographical_name'] = implode("; ", $attendance['geographical_name']);
