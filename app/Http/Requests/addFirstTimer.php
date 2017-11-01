@@ -28,7 +28,7 @@ class addFirstTimer extends FormRequest
             'name'=>'required',
             'address'=>'required',
             'phone_no'=>'required',
-            'email'=>'required'
+            'pastor'=>'required'
         ];
     }
 }

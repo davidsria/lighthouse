@@ -145,72 +145,85 @@
             <div class="box-body">
               <!-- Date -->
               <div class="row">
-              <div class=" col-md-3 form-group {{ $errors->has('sex') ? ' has-error' : '' }}">
-                <label>Sex:</label>
+                <div class=" col-md-4 form-group {{ $errors->has('sex') ? ' has-error' : '' }}">
+                  <label>Sex:</label>
 
-                <div class="input-group">
-                 <select class="form-control select2" name="sex" id="sex" style="width: 100%;" required/> 
-                    <option selected="selected" disabled>Select sex</option>
-                    <option value="Male">Male</opption>
-                    <option value="Female">Female</option>
-                  </select>
+                  <div class="input-group">
+                  <select class="form-control select2" name="sex" id="sex" style="width: 100%;" required/> 
+                      <option selected="selected" disabled>Select sex</option>
+                      <option value="Male">Male</opption>
+                      <option value="Female">Female</option>
+                    </select>
+                  </div>
+                  <!-- /.input group -->
+                </div>
+                <!-- /.form group -->
+
+                <!-- Date range -->
+                <div class=" col-md-4 form-group {{ $errors->has('status') ? ' has-error' : '' }}">
+                  <label>Status:</label>
+
+                  <div class="input-group">
+                    <select class="form-control select2" name="status" id="status" style="width: 100%;" required/>
+                      <option selected="selected" disabled>Select status</option>
+                      <option value="Single">Single</opption>
+                      <option value="Married">Married</option>
+                      <option value="Divorced">Divorced</option>
+                    </select>
+                  </div>
                 </div>
                 <!-- /.input group -->
-              </div>
-              <!-- /.form group -->
+                <div class="col-md-4 form-group {{ $errors->has('geographicalName_id') ? ' has-error' : '' }}">
+                  <label>Geographical Name:</label>
 
-              <!-- Date range -->
-              <div class=" col-md-3 form-group {{ $errors->has('status') ? ' has-error' : '' }}">
-                <label>Status:</label>
-
-                <div class="input-group">
-                  <select class="form-control select2" name="status" id="status" style="width: 100%;" required/>
-                    <option selected="selected" disabled>Select status</option>
-                    <option value="Single">Single</opption>
-                    <option value="Married">Married</option>
-                    <option value="Divorced">Divorced</option>
-                  </select>
-                </div>
+                  <div class="input-group" id="addSelect">
+                  
+                  </div>
                 <!-- /.input group -->
-              </div>
+                </div>
+              
               <!-- /.form group -->
 
-              </div>
+            </div>
 
             <div class="row">
-              <div class=" col-md-3 form-group {{ $errors->has('birthday') ? ' has-error' : '' }}">
-                <label>Birthday:</label>
+              <div class=" col-md-6 form-group {{ $errors->has('birthday') ? ' has-error' : '' }}">
+                <label>Birthday:</label><br>
 
-                <div class="input-group">
-                  <input type="date" name="birthday" id="birthday" class="form-control" />
-                </div>
+                    <div class="col-xs-6 form-group">
+                        <select name="birth_month" class="form-control">
+                          @foreach($months as $month)
+                          <option value="{{$month}}">{{$month}}</option>
+                          @endforeach    
+                        </select>
+                    </div>
+                    
+                    <div class="col-xs-6 form-group">
+                        <input type="number" name="birth_day" class="form-control" placeholder="day:">    
+                    </div>  
                 <!-- /.input group -->
               </div>
+              <div class=" col-md-6 form-group">
+                <label>Anniversary Date:</label><br>
 
-              
-
-              <div class=" col-md-3 form-group">
-                <label>Anniversary Date:</label>
-
-                <div class="input-group">
-                  <input type="date" name="anniversary" id="anniversary" class="form-control" />
-                </div>
+                <div class="col-xs-6 form-group">
+                        <select name="anni_month" class="form-control">
+                          @foreach($months as $month)
+                          <option value="{{$month}}">{{$month}}</option>
+                          @endforeach    
+                        </select>
+                    </div>
+                    
+                    <div class="col-xs-6 form-group">
+                        <input type="number" name="anni_day" class="form-control" placeholder="day:">    
+                    </div>  
                 <!-- /.input group -->
+                </div>
               </div>
             </div>
 
-              <!-- Date and time range -->
-              <div class="form-group {{ $errors->has('geographicalName_id') ? ' has-error' : '' }}">
-                <label>Geographical Name:</label>
 
-                <div class="input-group" id="addSelect">
-                  
-                </div>
-                <!-- /.input group -->
-              </div>
-              <!-- /.form group -->
-
-              <!-- Date and time range -->
+              
               <div class="form-group">
                 <div class="input-group">
                   <button type="submit" class="btn btn-primary pull-center">

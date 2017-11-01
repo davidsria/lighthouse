@@ -3,7 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
+use App\Member;
+use App\Project;
 use Illuminate\Support\Facades\Auth;
 
 class HomeController extends Controller
@@ -25,6 +26,9 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('dashboard');
+        $id = Auth::user()->id;
+        $members = Member::where('user_id', $id)->get();
+        $projects = Project::where('user_id', $id)->get();
+        return view('dashboard',compact('members','projects'));
     }
 }

@@ -43,8 +43,10 @@ Route::get('/konnectArea/view', 'KonnectAreasController@index')->name('viewKonne
 Route::get('/konnectArea/add', 'KonnectAreasController@create')->name('addKonnectArea');
 Route::post('/konnectArea/add', 'KonnectAreasController@store');
 Route::post('/konnectArea/delete/{id}', 'KonnectAreasController@destroy');
+Route::post('/konnectArea/update/{id}', 'KonnectAreasController@update');
 
 Route::post('/konnectCenter/add', 'KonnectCenterController@store');
+Route::get('/konnectCenter/{id}', 'KonnectCenterController@show');
 
 Route::get('/konnectPastor/{id}', 'KonnectPastorsController@show');
 Route::post('/konnectPastor/add', 'KonnectPastorsController@store');
@@ -55,18 +57,12 @@ Route::post('/geographicalName/add', 'GeographicalNamesController@store');
 Route::get('/konnectleader/{id}', 'KonnectLeaderController@show');
 Route::post('/konnectleader/add', 'KonnectLeaderController@store');
 
-
-Route::get('/viewReport', 'ReportsController@index');
-
 Route::get('/firsttimer/view', 'FirstTimersController@index');
 Route::get('/firsttimer/add', 'FirstTimersController@create');
 Route::post('/firsttimer/add', 'FirstTimersController@store');
 Route::get('/firsttimer/print', 'FirstTimersController@printer');
 
-Route::get('/report/excel', 'ReportsController@exportExcel')->name('excelreport');
-Route::post('/report/activation', 'ReportsController@activate')->name('monthlyactivation');
-Route::post('/viewReport', 'ReportsController@index')->name('filterReport');
-Route::get('/excelReport', 'ReportsController@printExcel');
+Route::get('/viewReport', 'ReportsController@index');
 Route::get('/report/excel', 'ReportsController@exportExcel')->name('excelreport');
 Route::post('/report/activation', 'ReportsController@activate')->name('monthlyactivation');
 Route::post('/viewReport', 'ReportsController@index')->name('filterReport');

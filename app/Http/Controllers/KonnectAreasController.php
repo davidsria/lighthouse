@@ -4,15 +4,23 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\User;
+use App\KonnectCenter;
+use App\GeographicalName;
+use App\KonnectPastor;
+use App\KonnectLeader;
 use Session;
 
 class KonnectAreasController extends Controller
 {
     //
 
-    public function index(){
-        $konnectAreas = User::latest('updated_at')->paginate(5);
-        return view('konnectArea.viewKonnectArea', compact('konnectAreas'));
+    public function index(Request $id){
+        $konnectAreas = User::all();
+        $konnectArea_details = User::find($id);
+        $konnectcenters = KonnectCenter::find($id);
+        $konnectpastors = KonnectPastor::find($id);
+        $geonames = GeographicalName::find($id);
+        return view('konnectArea.viewKonnectArea', compact('konnectAreas','konnectArea_details','geonames','konnectcenters','konnectpastors'));
         
     }
 
@@ -48,6 +56,10 @@ class KonnectAreasController extends Controller
        return $response;
     }
 
+    public function update(Request $request, $id){
+        $konnectArea = User::find($id);
+        $konnectArea->update($request->all());
+    }
 
     public function destroy($id){
         $konnectArea = User::find($id);

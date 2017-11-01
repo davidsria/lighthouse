@@ -20,7 +20,6 @@ class AttendanceController extends Controller
         $date = Carbon::today()->format('d-m-Y');
         $attendances = Attendance::where('user_id', $id)->latest('created_at')->get();
         foreach($attendances as $attendance){
-            $attendance['meeting_hold'] = $this->getMeetingHold($attendance['meeting_hold']);
             $attendance['date'] = $this->getDate($attendance['report_id'], $attendance['day']);
         }
         return view('attendance.view_attendance',compact('date','attendances'));
@@ -49,7 +48,7 @@ class AttendanceController extends Controller
         return view('attendance.add_attendance',compact('date', 'reports'));
     }
 
-    public function store(AddAttendance $request){
+    public function store(){
 
         try{
             auth()->user()->submit(
@@ -71,7 +70,6 @@ class AttendanceController extends Controller
         $date = Carbon::today()->format('d-m-Y');
         $attendances = Attendance::where('user_id', $id)->latest('created_at')->get();
         foreach($attendances as $attendance){
-            $attendance['meeting_hold'] = $this->getMeetingHold($attendance['meeting_hold']);
             $attendance['date'] = $this->getDate($attendance['report_id'], $attendance['day']);
         }
         return view('attendance.printAttendance',compact('date','attendances'));

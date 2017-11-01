@@ -17,14 +17,14 @@
           <!-- small box -->
           <div class="small-box bg-aqua">
             <div class="inner">
-              <h3>150</h3>
+              <h3>{{$projects->count()}}</h3>
 
               <p>Projects</p>
             </div>
             <div class="icon">
               <i class="fa fa-tasks"></i>
             </div>
-            <a href="#" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+            <a href="{{ url('/viewProject') }}" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
           </div>
         </div>
         <!-- ./col -->
@@ -32,14 +32,14 @@
           <!-- small box -->
           <div class="small-box bg-green">
             <div class="inner">
-              <h3>53<sup style="font-size: 20px"></sup></h3>
+              <h3>{{$members->count()}}<sup style="font-size: 20px"></sup></h3>
 
               <p>Members</p>
             </div>
             <div class="icon">
               <i class="fa fa-users"></i>
             </div>
-            <a href="#" class="small-box-footer">More info <i class="fa fa-arrow-users-right"></i></a>
+            <a href="{{ url('/members/view') }}" class="small-box-footer">More info <i class="fa fa-arrow-users-right"></i></a>
           </div>
         </div>
         <!-- ./col -->
@@ -47,7 +47,7 @@
           <!-- small box -->
           <div class="small-box bg-yellow">
             <div class="inner">
-              <h3>44</h3>
+              <h3>0</h3>
 
               <p>New Members</p>
             </div>
@@ -62,7 +62,7 @@
           <!-- small box -->
           <div class="small-box bg-red">
             <div class="inner">
-              <h3>1 pending</h3>
+              <h3>0 pending</h3>
 
               <p>Attendance Status</p>
             </div>

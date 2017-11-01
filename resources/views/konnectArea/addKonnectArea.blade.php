@@ -7,7 +7,7 @@
       </h1>
       <ol class="breadcrumb">
         <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
-        <li>Konnect Areas</li>
+        <li>Konnect Center</li>
         <li class="active">Add Konnect Details</li>
       </ol>
     </section>
@@ -21,7 +21,7 @@
           <!-- general form elements -->
           <div class="box box-primary">
             <div class="box-header with-border">
-              <h3 class="box-title">Konnect Area</h3>
+              <h3 class="box-title">Konnect Center</h3>
             </div>
             <!-- /.box-header -->
             <!-- form start -->
@@ -33,8 +33,8 @@
              <form role="form" method="post" action="{{url('/konnectArea/add')}}">
               <div class="box-body">
                 <div class="form-group {{ $errors->has('name') ? ' has-error' : '' }}">
-                  <label for="exampleInputEmail1">Konnect Area Name</label>
-                  <input type="text" class="form-control" name="name" id="exampleInputEmail1" placeholder="Enter konnect area name" required/>
+                  <label for="exampleInputEmail1">Konnect Center Name</label>
+                  <input type="text" class="form-control" name="name" id="exampleInputEmail1" placeholder="Enter konnect center name" required/>
                 </div>
                 <div class="form-group {{ $errors->has('password') ? ' has-error' : '' }}">
                   <label for="exampleInputPassword1">Password</label>
@@ -56,7 +56,7 @@
         <div class="col-md-6">
           <div class="box box-success">
             <div class="box-header with-border">
-              <h3 class="box-title">Konnect Center</h3>
+              <h3 class="box-title">Konnect Area</h3>
             </div>
              @if(Session::has('centerResponse'))
               <div class="alert alert-success" role="alert">
@@ -65,17 +65,17 @@
             @endif
              <form role="form" method="post" action="{{url('/konnectCenter/add')}}">
             <div class="box-body">
+              {{ csrf_field() }}
+              <input class="form-control {{ $errors->has('name') ? ' has-error' : '' }}" type="text" name="name" placeholder="Enter Konnect area" required/>
+              <br>
               <select class="form-control{{ $errors->has('user_id') ? ' has-error' : '' }}" name="user_id" required/>
-              <option selected="selected" disabled>Select Konnect Area</option>
+              <option selected="selected" disabled>Select Konnect Center</option>
               @foreach($konnectAreas as $konnectArea)
                 @if($konnectArea->isAdmin == 0)
                   <option value="{{$konnectArea->id}}">{{$konnectArea->name}}</option>
                 @endif
               @endforeach
               </select>
-              <br>
-              {{ csrf_field() }}
-              <input class="form-control {{ $errors->has('name') ? ' has-error' : '' }}" type="text" name="name" placeholder="Enter Konnect center" required/>
               <br>
               <button type="submit" name="addKonnectCenter" class="btn btn-primary">Add</button>
             </div>
@@ -114,7 +114,7 @@
                 </div>
                 
                 <div class="form-group {{ $errors->has('user_id') ? ' has-error' : '' }}">
-                  <label>Konnect Area</label>
+                  <label>Konnect Center</label>
                     <select class="form-control" name="user_id" required/>
                         <option selected="selected" disabled>Choose........</option>
                         @foreach($konnectAreas as $konnectArea)
@@ -158,7 +158,7 @@
                 
                 <!-- select -->
                 <div class="form-group {{ $errors->has('user_id') ? ' has-error' : '' }}">
-                  <label>Konnect Area</label>
+                  <label>Konnect Center</label>
                   <select class="form-control" name="user_id" required/>
                     <option selected="selected" disabled>Choose........</option>
                     @foreach($konnectAreas as $konnectArea)
@@ -195,13 +195,13 @@
               {{ csrf_field() }}
                 <!-- text input -->
                 <div class="form-group {{ $errors->has('name') ? ' has-error' : '' }}">
-                  <label>Pastor Name</label>
+                  <label>Leader Name</label>
                   <input type="text" name="name" class="form-control" placeholder="Enter Konnect Leader Name" required/>
                 </div>
                 
                 <!-- select -->
                 <div class="form-group {{ $errors->has('user_id') ? ' has-error' : '' }}">
-                  <label>Konnect Area</label>
+                  <label>Konnect Center</label>
                   <select class="form-control" name="user_id" required/>
                     <option selected="selected" disabled>Choose........</option>
                     @foreach($konnectAreas as $konnectArea)

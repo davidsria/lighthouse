@@ -1,14 +1,14 @@
 @extends('layouts.master')
-@section('title','View First Timer')
+@section('title','Guest View')
 @section('breadcrumb')
     <section class="content-header">
       <h1>
-        View First Timers
+        View Guest
       </h1>
       <ol class="breadcrumb">
         <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
-        <li>First Timers</li>
-        <li class="active">View First Timers</li>
+        <li>Guest View</li>
+        <li class="active">View Guest</li>
       </ol>
     </section>
 @endsection
@@ -19,7 +19,7 @@
       <div class="row">
         <div class="col-xs-12">
           <h2 class="page-header">
-            <i class="fa fa-globe"></i> {{ Auth::user()->name}}&nbsp;Konnect Area
+            <i class="fa fa-globe"></i> {{ Auth::user()->name}}&nbsp;Konnect Center
             <small class="pull-right">Date: {{ $date }}</small>
           </h2>
         </div>

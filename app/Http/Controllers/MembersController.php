@@ -31,7 +31,9 @@ class MembersController extends Controller
     
     /* show the view */
     public function create(){
-        return view('member.add');
+        $months = array('January', 'Febuary', 'March', 'April', 'May', 'June',
+        'July', 'August', 'September', 'October', 'November', 'December');
+        return view('member.add', compact('months'));
     }
 
     /* get all members for a konnect area */
@@ -82,9 +84,8 @@ class MembersController extends Controller
         'status' => 'required|max:8',
         'telephone' => 'required|max:20',
         'address' => 'required',
-        'birthday'=>'required',
         ]);
-
+            
        if(Member::create([
            'geographicalName_id' => $request['geographicalName_id'],
            'name' => $request['name'],

@@ -47,7 +47,7 @@
                                 </div>
                                 </div>
                                 <!-- text input -->
-                                <div class="form-group {{ $errors->has('location') ? ' has-error' : '' }}">
+                                <div class="appended form-group {{ $errors->has('location') ? ' has-error' : '' }}">
                                 <label>Location</label>
                                 <input type="text" class="form-control" name="location" placeholder="Enter ...">
                                 </div>
@@ -61,37 +61,31 @@
                                         <div class="col-md-6">
                                             <label>Month/Year</label>
                                             <select class="form-control" name="report_id">
+                                                @if($reports->count()>0)
                                                 @foreach($reports as $report)
                                                 <option value="{{$report->id}}">{{$report->month}},&nbsp;{{$report->year}}</option>
                                                 @endforeach
+                                                @else
+                                                    <option>No attendance month activated</option>
+                                                @endif
                                             </select>
                                         </div>
                                     </div>
                                 </div>
 
-                                <div class="form-group {{ $errors->has('start_time') ? ' has-error' : '' }}">
+                                <div class=" appended form-group {{ $errors->has('start_time') ? ' has-error' : '' }}">
                                 <label>Start Time</label>
                                 <input type="time" class="form-control" name="start_time" placeholder="Enter ..." >
                                 </div>
 
-                                <div class="appended form-group {{ $errors->has('duration') ? ' has-error' : '' }}">
-                                <label>Duration <samll style="color:red">*</samll></label>
-                                <input type="text" class="form-control" name="duration" placeholder="Enter ..." >
+                                <div class=" appended form-group {{ $errors->has('end_time') ? ' has-error' : '' }}">
+                                <label>End Time</label>
+                                <input type="time" class="form-control" name="end_time" placeholder="Enter ..." >
                                 </div>
 
                                 <div class=" appended form-group">
                                 <label>Highlights</label>
                                 <textarea class="form-control" rows="3" name="highlights" placeholder="Enter ..."></textarea>
-                                </div>
-
-                                <div class="appended form-group">
-                                <label>No of Guest</label>
-                                <input type="number" min='0' class="form-control" name="guest" placeholder="Enter ..." >
-                                </div>
-
-                                <div class="appended form-group">
-                                <label>Guest Details</label>
-                                <textarea class="form-control" rows="3" name="guest_details" placeholder="Enter ..."></textarea>
                                 </div>
 
                                 <div class="appended form-group {{ $errors->has('men') ? ' has-error' : '' }}">
@@ -107,6 +101,16 @@
                                 <div class="appended form-group {{ $errors->has('children') ? ' has-error' : '' }}">
                                 <label>No of Children <samll style="color:red">*</samll></label>
                                 <input type="number" min='0' class="form-control" name="children" placeholder="Enter ..." >
+                                </div>
+
+                                <div class="appended form-group">
+                                <label>No of Guest</label>
+                                <input type="number" min='0' class="form-control" name="guest" placeholder="Enter ..." >
+                                </div>
+
+                                <div class="appended form-group">
+                                <label>Guest Details</label>
+                                <textarea class="form-control" rows="3" name="guest_details" placeholder="Enter ..."></textarea>
                                 </div>
 
                                 <div class="box-footer">

@@ -29,14 +29,12 @@
       <form method="post" action="{{ route('filterReport') }}">
         {{ csrf_field() }}
         <div class="col-md-3">
-          @if(!$reports->isEmpty())
           <select class="form-control" name="report_date">
           <option value="all">All months</option>
           @foreach($reports as $report)
             <option value="{{$report->id}}"  @if (old('report_date') == $report->id) selected="selected" @endif>{{$report->month}},&nbsp;{{$report->year}}</option>
           @endforeach
           </select>
-          @endif
         </div>
         <div class="col-md-2">
           <select class="form-control" name="area">
@@ -57,21 +55,21 @@
   </div>
 </div>
 </form><br/><br/>
-   <table id="allattendance" class="table table-striped table-bordered" cellspacing="0" width="1000px" style="font-size:9px;">
+  <div class="container-fluid" style="margin:auto;">
+   <table id="allattendance" class="table table-striped table-bordered" cellspacing="0" width="100%" style="font-size:10px;">
     <thead>   
       <tr>
         <th rowspan="2">S/N</th>
-        <th rowspan="2">KONNECT AREA</th>   
+        <th rowspan="2">KONNECT CENTER (CALL NAME)</th>   
         <th rowspan="2">KONNECT LEADER</th>   
         <th rowspan="2">GEOGRAPHICAL AREA</th>   
-        <th rowspan="2">KONNECT CENTER (CALL NAME)</th>
+        <th rowspan="2">KONNECT AREA</th>
         <th rowspan="2">KONNECT PASTOR</th>
         <th rowspan="2">LOCATION</th>
         <th rowspan="2">DID MEETING HOLD?</th>
         <th colspan="4" style="text-align:center;">ATTENDANCE</th>
         <th rowspan="2">START TIME</th>
-        <th rowspan="2">END TIME</th> 
-        <th rowspan="2">DURATION</th>
+        <th rowspan="2">END TIME</th>
         <th rowspan="2">HIGHLIGHTS</th>
         <th rowspan="2">NO OF GUEST</th>
         <th rowspan="2">GUEST DETAILS</th>
@@ -84,13 +82,13 @@
       </tr>
     </thead>
     <tbody>
-      @foreach($attendances as $attendance)
+      @foreach($attendances as $key => $attendance)
         <tr>
-          <td>{{$attendance->id}}</td>
+          <td>{{ ++$key }} </td>
           <td>{{$attendance->user_id}}</td>   
           <td>
             @for ($i = 0; $i < count($attendance->konnect_leader); $i++)
-              {{ $attendance->konnect_leader[$i] }}
+              {!! $attendance->konnect_leader[$i] !!}
               @if($i<count($attendance->konnect_leader)-1)
                 <hr>
               @else
@@ -127,16 +125,16 @@
           <td>{{$attendance->women}}</td>
           <td>{{$attendance->children}}</td>
           <td>{{$attendance->total}}</td>
-          <td>{{$attendance->start_time}}</td>
-          <td>{{$attendance->end_time}}</td> 
-          <td>{{$attendance->duration}}</td>
+          <td>{{date("g:i a", strtotime($attendance->start_time))}}</td>
+          <td>{{date("g:i a", strtotime($attendance->end_time))}}</td>
           <td>{{$attendance->highlights}}</td>
           <td>{{$attendance->guest}}</td>
           <td>{{$attendance->guest_details}}</td>
         </tr>
     @endforeach
     </tbody>
-  </table>           
+  </table>
+  </div>           
   </div>
 
 <!-- modal for attendance monthly activation-->

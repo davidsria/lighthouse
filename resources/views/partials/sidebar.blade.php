@@ -3,7 +3,7 @@
       <!-- Sidebar user panel -->
       <div class="user-panel">
         <div class="pull-left image">
-          <img src="{{ URL::asset('dist/img/user2-160x160.jpg') }}" class="img-circle" alt="User Image">
+          <img src="{{ URL::asset('dist/img/account-512.png') }}" class="img-circle" alt="User Image">
         </div>
         <div class="pull-left info">
           <p>{{ Auth::user()->name }}</p>
@@ -17,25 +17,13 @@
             <i class="fa fa-dashboard"></i> <span>Dashboard</span>
           </a>
         </li>
-        @role()
-        <li class="treeview ">
-          <a href="#">
-            <i class="fa fa-circle-o"></i> <span>First Timers</span>
-            <span class="pull-right-container">
-              <i class="fa fa-angle-left pull-right"></i>
-            </span>
-          </a>
-          <ul class="treeview-menu">
-            <li><a href="{{ url('/firsttimer/view') }}"><i class="fa fa-circle-o"></i> First Timers</a></li>
-            <li><a href="{{ url('/firsttimer/add') }}"><i class="fa fa-circle-o"></i> Add First Timer</a></li>
-          </ul>
-        </li>
-        @endrole
+        
+        @if(!Auth::user()->hasRole('admin'))
 
         <li class="treeview  {{ Request::path() == 'viewAttendance' ? 'active' : '' }} ||  {{ Request::path() == 'addAttendance' ? 'active' : '' }}">
           <a href="#">
             <i class="fa fa-vcard-o"></i>
-            <span>Attendance</span>
+            <span>Konnect Report</span>
             <span class="pull-right-container">
               <i class="fa fa-angle-left pull-right"></i>
             </span>
@@ -70,23 +58,39 @@
             <li><a href="{{ url('/members/add') }}"><i class="fa fa-circle-o"></i> Add Members</a></li>
           </ul>
         </li>
-        <li class="treeview {{ Request::path() == 'konnectArea/view' ? 'active' : '' }}  || {{ Request::path() == 'konnectArea/add' ? 'active' : '' }}">
+        <li class="treeview ">
           <a href="#">
-            <i class="fa fa-map-marker" ></i> <span>Konnect Areas</span>
+            <i class="fa fa-circle-o"></i> <span>Guest View</span>
             <span class="pull-right-container">
               <i class="fa fa-angle-left pull-right"></i>
             </span>
           </a>
           <ul class="treeview-menu">
-            <li class="{{ Request::path() == 'konnectArea/view' ? 'active' : '' }}"><a href="{{ url('/konnectArea/view') }}"><i class="fa fa-circle-o"></i> View All Konnect Areas</a></li>
-            <li class="{{ Request::path() == 'konnectArea/add' ? 'active' : '' }}"><a href="{{ url('/konnectArea/add') }}"><i class="fa fa-circle-o"></i> Add Konnect Area</a></li>
+            <li><a href="https://lighthouseng.gospelsoftware.com/login"><i class="fa fa-circle-o"></i> Guest View</a></li>
+            <li><a href="{{ url('/firsttimer/add') }}"><i class="fa fa-circle-o"></i> Comment/Note</a></li>
           </ul>
         </li>
+        @endif
+        @role('admin')
+        <li class="treeview {{ Request::path() == 'konnectArea/view' ? 'active' : '' }}  || {{ Request::path() == 'konnectArea/add' ? 'active' : '' }}">
+          <a href="#">
+            <i class="fa fa-map-marker" ></i> <span>Konnect Center</span>
+            <span class="pull-right-container">
+              <i class="fa fa-angle-left pull-right"></i>
+            </span>
+          </a>
+          <ul class="treeview-menu">
+            <li class="{{ Request::path() == 'konnectArea/view' ? 'active' : '' }}"><a href="{{ url('/konnectArea/view') }}"><i class="fa fa-circle-o"></i> View All Konnect Centers</a></li>
+            <li class="{{ Request::path() == 'konnectArea/add' ? 'active' : '' }}"><a href="{{ url('/konnectArea/add') }}"><i class="fa fa-circle-o"></i> Add Konnect Center</a></li>
+          </ul>
+        </li>
+        
         <li class="{{ Request::path() == 'viewReport' ? 'active' : '' }}">
           <a href="{{ url('/viewReport') }}">
             <i class="fa fa-book"></i> <span>Reports</span>
           </a>
         </li>
+        @endrole
       </ul>
     </section>
   

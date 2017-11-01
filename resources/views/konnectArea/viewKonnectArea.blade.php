@@ -19,48 +19,33 @@
         <div class="col-md-7">
           <div class="box">
             <div class="box-header with-border">
-              <h3 class="box-title">Konnect Areas</h3>
+              <h3 class="box-title">Konnect Centers</h3>
             </div>
             <!-- /.box-header -->
             <div class="box-body">
             <div id="response" style="display:none;"></div>
-              <table class="table table-bordered" id="allKonnectAreas">
-                <tr>
-                  <th style="width: 10px">#</th>
-                  <th>Name</th>        
-                </tr>
+              <table class="table table-bordered datatable" id="allKonnectAreas">
+                <thead>
+                  <tr>
+                    <th>Name</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody>
                 @foreach($konnectAreas as $konnectArea)
-                    @if($konnectArea->isAdmin == 0)
-                        <tr>
-                            <td>{{$konnectArea->id}}</td>
-                            <td>{{$konnectArea->name}}</td>
-                            <td class="dropdown" style="width:2px;">
-                              <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">action
-                                <span class="caret"></span>
-                              </button>
-                              <ul class="dropdown-menu">
-                                <li data-id="{{$konnectArea->id}}" data-createdAt="{{$konnectArea->created_at}}" data-updatedAt="{{$konnectArea->updated_at}}" data-name="{{$konnectArea->name}}" data-toggle="modal" data-target="#myModal" id="viewArea"><a href="#">view</a></li>
-                                <li data-id="{{$konnectArea->id}}" data-name="{{$konnectArea->name}}" data-toggle="modal" data-target="#myModal" id="deleteArea"><a href="#">remove</a></li>
-                              </ul>
-                            </td>
-                        </tr>
-                    @endif
-                @endforeach
+                  <tr>
+                    <td>{{$konnectArea->name}}</td>
+                    <td>
+                      <button class="btn btn-warning btn-xs"  data-toggle="modal" data-target="#edit" >Edit</button>&nbsp;
+                      <button class="btn btn-primary btn-xs" data-id="{{$konnectArea->id}}" data-createdAt="{{$konnectArea->created_at}}" data-updatedAt="{{$konnectArea->updated_at}}" data-name="{{$konnectArea->name}}" data-toggle="modal" data-target="#myModal" id="viewArea">view</button>&nbsp;
+                      <button class="btn btn-danger btn-xs" data-id="{{$konnectArea->id}}" data-name="{{$konnectArea->name}}" data-toggle="modal" data-target="#myModal" id="deleteArea">remove</button>
+                    </td>
+                  </tr>
+                  @endforeach
+                </tbody>
               </table>
-              <div style="text-align:center;">
-                {{ $konnectAreas->links() }} 
-            </div>
             </div>
             <!-- /.box-body -->
-            <div class="box-footer clearfix">
-              <!--<ul class="pagination pagination-sm no-margin pull-right">
-                <li><a href="#">&laquo;</a></li>
-                <li><a href="#">1</a></li>
-                <li><a href="#">2</a></li>
-                <li><a href="#">3</a></li>
-                <li><a href="#">&raquo;</a></li>
-              </ul>-->
-            </div>
           </div>
           <!-- /.box -->
 
@@ -93,7 +78,7 @@
       <span id="deleteId" style="display:none;"></span>
       <div class="container" id="viewDisplay" style="display:none">
         <h3><strong id="areaName"></strong></h3>
-        <h5><strong>Strong Ikeja Konnect Center</strong></h5>
+        <h5><strong id="konnectCenter"> </strong></h5>
         Created At: <span id="createdDate"></span><br>
         Last Updated: <span id="lastUpdated"></span>
         <div class="row">
@@ -102,6 +87,8 @@
               <div id='geographicalName'></div>
             <label>Konnect Pastors</label><span class="badge" id="pastorNo"></span>
               <div id='konnectPastor'></div>
+              <label>Konnect Leader</label><span class="badge" id="leaderNo"></span>
+              <div id='konnectLeader'></div>
           </div>
           <div class="col-md-4">
             <label>Members</label><span class="badge" id="memberNo"></span>
@@ -118,6 +105,50 @@
     </div><!-- /.modal-content -->
   </div><!-- /.modal-dialog -->
 </div><!-- /.modal -->
+
+<!-- Modal  -->
+<div class="modal fade" id="edit" tabindex="-1" role="dialog">
+  <div class="modal-dialog" role="document" >
+    <div class="modal-content" style="background-color:snow;" >
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title">Edit Konnect Center</h4>
+      </div>
+      <div class="modal-body">
+        <form method="PATCH" action="{{url('/')}}">
+              {{csrf_field()}}
+              {{ method_field('PATCH') }}
+            <div class="form-group">
+            @foreach($konnectArea_details as $user)
+            <input type="text" class="form-control" name="name" value="{{$user->name}} konnect Center">
+            @endforeach
+            </div>
+            <div class="form-group">
+            @foreach($konnectcenters as $center)
+                <input type="email" class="form-control" name="konnectcenter"  value="{{$center->name}} konnect Area">
+                @endforeach
+            </div>
+            <div class="form-group">
+            @foreach($konnectpastors as $pastor)
+                <input type="text" class="form-control" name="konnectPastor" value="{{$pastor->name}}">
+                @endforeach
+            </div>
+            <div class="form-group">
+            @foreach($geonames as $geo)
+                <input type="text" class="form-control" name="geographical_name" id="address" value="{{$geo->name}}">
+              @endforeach
+            </div>
+           
+      </div>
+      <div class="modal-footer">
+        <button type="submit" class="btn btn-success" id="saveChanges"><i class="fa fa-save"></i> Save changes</button>
+        <button type="button" class="btn btn-default" id="closeButton"><i class="fa fa-times"></i> Cancel</button>
+      </div>
+    </div><!-- /.modal-content -->
+  </form>
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+
 {{ csrf_field() }}
 
 <script>
@@ -129,11 +160,12 @@
                 var updatedAt = $(this).data('updatedat');
                 $('#createdDate').text(createdAt);
                 $('#lastUpdated').text(updatedAt);
-                $('#areaName').text(name+' Konnect Area');
+                $('#areaName').text(name+' Konnect Center');
+                
                 $('#deleteMessage').html("");
                 $('#deleteMessage').css('display','none');
                 $('#viewDisplay').css('display','block');
-                $('#title').text('Konnect Area View');
+                $('#title').text('Konnect Center View');
                 $('#delete').hide(400);
                 $('#saveChanges').hide(400);
                 $.get('/geographicalName/'+id, function(data){
@@ -155,6 +187,24 @@
                         container.append('<li>'+value.name+'</li>');
                    });
                    $('#konnectPastor').html(container);
+                });
+                $.get('/konnectCenter/'+id, function(data){
+                  console.log(data);
+                  var container = $('<div />');
+                    $.each(data, function(key, value){
+                        container.append(value.name+' Konnect area');
+                   });
+                    $('#konnectCenter').html(container);
+                });
+                $.get('/konnectleader/'+id, function(data){
+                    console.log(data);
+                    console.log("Data length is "+data.length);
+                    var container = $('<ul />');
+                    $('#leaderNo').text(data.length);
+                   $.each(data, function(key, value){
+                        container.append('<li>'+value.name+'</li>');
+                   });
+                   $('#konnectLeader').html(container);
                 });
                 $.get('/members/'+id, function(data){
                     console.log(data);

@@ -1,14 +1,14 @@
 @extends('layouts.master')
-@section('title','Add First Timer')
+@section('title','Add Guest')
 @section('breadcrumb')
     <section class="content-header">
       <h1>
-        Add First Timer
+        Add Guest
       </h1>
       <ol class="breadcrumb">
       <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
-      <li>First Timer</li>
-      <li class="active">Add First Timer</li>
+      <li>Guest View</li>
+      <li class="active">Comment</li>
       </ol>
     </section>
 @endsection
@@ -38,7 +38,7 @@
                                 </div>
 
                                 <div class=" form-group {{ $errors->has('name') ? ' has-error' : '' }}">
-                                <label>Name <samll style="color:red">*</samll></label>
+                                <label>Guest <samll style="color:red">*</samll></label>
                                 <input type="text" class="form-control" name="name" placeholder="Enter ..." >
                                 </div>
 
@@ -47,29 +47,32 @@
                                 <input type="text" class="form-control" name="address" placeholder="Enter ...">
                                 </div>
 
-
-                                <div class="appended form-group {{ $errors->has('email') ? ' has-error' : '' }}">
-                                <label>Email <samll style="color:red">*</samll></label>
-                                <input type="email" class="form-control" name="email" placeholder="Enter ..." >
-                                </div>
-
                                 <div class="  form-group {{ $errors->has('phone') ? ' has-error' : '' }}">
                                 <label>Phone Number</label>
                                 <input type="text" name="phone_no" class="form-control" placeholder="Enter ...">
                                 </div>
 
+                                <div class="  form-group {{ $errors->has('pastor') ? ' has-error' : '' }}">
+                                <label>Konnect Pastor</label>
+                                <input type="text" name="pastor" class="form-control" placeholder="Enter ...">
+                                </div>
+
                                 <div class=" form-group ">
-                                <label>Sex</label>
-                                <div class="radio">
-                                    <label> 
-                                    <input type="radio" name="sex" id="sex1" value="female" checked>Female
-                                    </label>
-                                    &nbsp;
-                                    <label> 
-                                    <input type="radio" name="sex" id="sex2" value="male">Male
-                                    </label>
+                                <label>1st Contact</label>
+                                <input type="text" name="contact1" class="form-control" placeholder="Enter ...">
                                 </div>
+
+                                <div class=" form-group ">
+                                <label>2nd Contact</label>
+                                <input type="text" name="contact2" class="form-control" placeholder="Enter ...">
                                 </div>
+
+                                <div class=" form-group ">
+                                <label>3rd Contact</label>
+                                <input type="text" name="contact3" class="form-control" placeholder="Enter ...">
+                                </div>
+
+
                             <div class="form-group">
                             <div class="input-group">
                                 <button type="submit" class="btn btn-primary pull-center">

@@ -47,4 +47,5 @@ class FirstTimersController extends Controller
         $firstTimers = firstTimers::where('user_id', $id)->latest('created_at')->get();
         return view('firstTimers.printer',compact('date','firstTimers'));
     }
+
 }

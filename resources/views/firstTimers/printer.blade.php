@@ -1,5 +1,5 @@
 @include('partials.head')
-@section('title','View members')
+@section('title','Guest View')
 <body  onload="window.print();">
  <!-- Main content -->
     <section class="invoice">
@@ -7,7 +7,7 @@
       <div class="row">
         <div class="col-xs-12">
           <h2 class="page-header">
-            <i class="fa fa-globe"></i> {{ Auth::user()->name}}&nbsp;Konnect Area
+            <i class="fa fa-globe"></i> {{ Auth::user()->name}}&nbsp;Konnect Center
             <small class="pull-right">Date: {{ $date }}</small>
           </h2>
         </div>

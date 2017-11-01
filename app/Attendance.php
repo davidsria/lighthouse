@@ -8,7 +8,7 @@ class Attendance extends Model
 {
     //
     protected $fillable = [
-        'meeting_hold', 'location', 'day', 'report_id', 'start_time', 'duration', 'men', 'women', 'children',
+        'meeting_hold', 'location', 'day', 'report_id', 'start_time', 'end_time','duration', 'men', 'women', 'children',
          'highlights', 'guest', 'guest_details',
     ];
 

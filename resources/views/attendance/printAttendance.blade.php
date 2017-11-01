@@ -28,7 +28,7 @@
                 <th>Meeting Hold</th>
                 <th>Location</th>
                 <th>Start Time</th>
-                <th>Duration</th>
+                <th>End Time</th>
                 <th>Hightlights</th>
                 <th>Guests</th>
                 <th>Guest Details</th>
@@ -44,7 +44,7 @@
                     <td>{{ $attendance->meeting_hold }}</td>
                     <td>{{ $attendance->location }}</td>
                     <td>{{ $attendance->start_time }}</td>
-                    <td>{{ $attendance->duration }}</td>
+                    <td>{{ $attendance->end_time }}</td>
                     <td>{{ $attendance->highlights }}</td>
                     <td>{{ $attendance->guest }}</td>
                     <td>{{ $attendance->guest_details }}</td>

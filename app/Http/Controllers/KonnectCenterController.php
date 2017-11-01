@@ -9,6 +9,7 @@ use Session;
 class KonnectCenterController extends Controller
 {
     //
+    
 
     public function store(Request $request){
         $response = $this->preStore($request);
@@ -28,5 +29,9 @@ class KonnectCenterController extends Controller
            $response = 'something went wrong, try again';
        }
        return $response;
+    }
+    public function show($id){
+        $result = KonnectCenter::where('user_id', $id)->get();
+        return $result;
     }
 }
