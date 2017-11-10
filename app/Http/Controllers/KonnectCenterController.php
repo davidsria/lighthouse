@@ -34,4 +34,10 @@ class KonnectCenterController extends Controller
         $result = KonnectCenter::where('user_id', $id)->get();
         return $result;
     }
+
+    public function update(Request $request, $id){
+        $konnectCenter = KonnectCenter::find($id);
+        $konnectCenter->update($request->all());
+        return response()->json(['success' => "Konnect area succesfully updated"]);
+    }
 }

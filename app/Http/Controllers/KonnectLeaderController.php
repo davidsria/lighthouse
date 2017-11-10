@@ -31,4 +31,16 @@ class KonnectLeaderController extends Controller
         $result = KonnectLeader::where('user_id', $id)->get();
         return $result;
     }
+
+    public function destroy($id){
+        $konnectLeader = KonnectLeader::find($id);
+        $konnectLeader->delete();
+        return response()->json(['success' => $konnectLeader->name." Konnect center successfully deleted"]);
+    }
+
+    public function update(Request $request, $id){
+        $konnectLeader = KonnectLeader::find($id);
+        $konnectLeader->update($request->all());
+        return response()->json(['success' => "Successfully updated"]);
+    }
 }

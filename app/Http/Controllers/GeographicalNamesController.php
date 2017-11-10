@@ -37,4 +37,16 @@ class GeographicalNamesController extends Controller
         return $result;
     }
 
+    public function destroy($id){
+        $geographical = GeographicalName::find($id);
+        $geographical->delete();
+        return response()->json(['success' => $geographical->name." successfully deleted as a geographical name"]);
+    }
+
+    public function update(Request $request, $id){
+        $geographical = GeographicalName::find($id);
+        $geographical->update($request->all());
+        return response()->json(['success' => "Updated successfully"]);
+    }
+
 }

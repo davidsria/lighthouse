@@ -33,4 +33,16 @@ class KonnectPastorsController extends Controller
         $result = KonnectPastor::where('user_id', $id)->get();
         return $result;
     }
+
+    public function destroy($id){
+        $konnectPastor = KonnectPastor::find($id);
+        $konnectPastor->delete();
+        return response()->json(['success' => $konnectPastor->name." successfully deleted"]);
+    }
+
+    public function update(REquest $request, $id){
+        $konnectPastor = KonnectPastor::find($id);
+        $konnectPastor->update($request->all());
+        return response()->json(['success' => "Successfully updated"]);
+    }
 }

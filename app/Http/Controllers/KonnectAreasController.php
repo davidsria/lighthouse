@@ -59,11 +59,22 @@ class KonnectAreasController extends Controller
     public function update(Request $request, $id){
         $konnectArea = User::find($id);
         $konnectArea->update($request->all());
+        return response()->json(['success' => "Konnect center succesfully updated"]);
     }
 
     public function destroy($id){
         $konnectArea = User::find($id);
         $konnectArea->delete();
+        return response()->json(['success' => $konnectArea->name." Konnect center successfully deleted"]);
+    }
+
+    public function edit($id){
+        $konnectArea = User::find($id);
+        $konnectCenters = KonnectCenter::where('user_id', $id)->get();
+        $geographicals = GeographicalName::where('user_id', $id)->get();
+        $konnectLeaders = KonnectLeader::where('user_id', $id)->get();
+        $konnectPastors = KonnectPastor::where('user_id', $id)->get();
+        return view('konnectArea.editKonnectArea', compact('konnectArea', 'konnectCenters', 'geographicals', 'konnectLeaders', 'konnectPastors'));
     }
 
 }

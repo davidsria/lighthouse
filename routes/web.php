@@ -42,20 +42,28 @@ Route::get('/member/{id}', 'MembersController@showMember');
 Route::get('/konnectArea/view', 'KonnectAreasController@index')->name('viewKonnectArea');
 Route::get('/konnectArea/add', 'KonnectAreasController@create')->name('addKonnectArea');
 Route::post('/konnectArea/add', 'KonnectAreasController@store');
-Route::post('/konnectArea/delete/{id}', 'KonnectAreasController@destroy');
+Route::get('/konnectArea/edit/{id}', 'KonnectAreasController@edit')->name('editKonnectArea');
+Route::delete('/konnectArea/delete/{id}', 'KonnectAreasController@destroy');
 Route::post('/konnectArea/update/{id}', 'KonnectAreasController@update');
 
 Route::post('/konnectCenter/add', 'KonnectCenterController@store');
 Route::get('/konnectCenter/{id}', 'KonnectCenterController@show');
+Route::post('/konnectCenter/update/{id}', 'KonnectCenterController@update');
 
 Route::get('/konnectPastor/{id}', 'KonnectPastorsController@show');
 Route::post('/konnectPastor/add', 'KonnectPastorsController@store');
+Route::delete('/konnectPastor/delete/{id}', 'KonnectPastorsController@destroy');
+Route::post('/konnectPastor/edit/{id}', 'KonnectPastorsController@update');
 
 Route::get('/geographicalName/{id}', 'GeographicalNamesController@show');
 Route::post('/geographicalName/add', 'GeographicalNamesController@store');
+Route::delete('/geographicalName/delete/{id}', 'GeographicalNamesController@destroy');
+Route::post('/geographicalName/edit/{id}', 'GeographicalNamesController@update');
 
 Route::get('/konnectleader/{id}', 'KonnectLeaderController@show');
 Route::post('/konnectleader/add', 'KonnectLeaderController@store');
+Route::delete('/konnectleader/delete/{id}', 'KonnectLeaderController@destroy');
+Route::post('/konnectleader/edit/{id}', 'KonnectLeaderController@update');
 
 Route::get('/firsttimer/view', 'FirstTimersController@index');
 Route::get('/firsttimer/add', 'FirstTimersController@create');
