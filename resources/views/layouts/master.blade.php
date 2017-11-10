@@ -27,6 +27,7 @@
       <!-- /.row -->
       <!-- Main row -->
       @yield('content')
+      @include('partials.modals')
       <!-- /.row (main row) -->
 
     </section>

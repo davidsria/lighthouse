@@ -38,38 +38,40 @@
         <div class="col-xs-12 table-responsive" id="membersList">
           <table  class="table table-striped datatable">
             <thead>
-            <tr>
-              <th>Name</th>
-              <th>Email</th>
-              <th>Sex</th>
-              <th>Telephone</th>
-              <th>Address</th>
-              <th>Status</th>
-              <th>Birthday</th>
-              <th>Anniversary Date</th>
-              <th>Geographical Name</th>
-              <th>Action</th>
-            </tr>
+              <tr>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Sex</th>
+                <th>Telephone</th>
+                <th>Address</th>
+                <th>Status</th>
+                <th>Birthday</th>
+                <th>Anniversary Date</th>
+                <th>Geographical Name</th>
+                <th>Action</th>
+              </tr>
             </thead>
             <tbody>
-            @foreach($members as $member)
-            <tr>
-                <td>{{ $member->name }}</td>
-                <td>{{ $member->email }}</td>
-                <td>{{ $member->sex }}</td>
-                <td>{{ $member->telephone }}</td>
-                <td>{{ $member->address }}</td>
-                <td>{{ $member->status }}</td>
-                <td>{{ $member->birthday }}</td>
-                <td>{{ $member->anniversary }}</td>
-                <td>{{ $member->geographicalName_id }}</td>
-                <td>
-                  <ul style="list-style-type: none;margin: 0; padding: 0;">
-                    <li style="display: inline" data-id="{{$member->id}}" data-name="{{$member->name}}" data-toggle="modal" data-target="#myModal" id="editMember"><a class="btn btn-primary btn-xs" href="#">edit</a></li>
-                    <li style="display: inline" data-id="{{$member->id}}" data-name="{{$member->name}}" data-toggle="modal" data-target="#myModal" id="deleteMember"><a class="btn btn-danger btn-xs" href="#">Delete</a></li>
-                  </ul>
-                </td>      
-            </tr>
+              @foreach($members as $member)
+              <tr>
+                  <td>{{ $member->name }}</td>
+                  <td>{{ $member->email }}</td>
+                  <td>{{ $member->sex }}</td>
+                  <td>{{ $member->telephone }}</td>
+                  <td>{{ $member->address }}</td>
+                  <td>{{ $member->status }}</td>
+                  <td>{{ $member->birthday }}</td>
+                  <td>{{ $member->anniversary }}</td>
+                  <td>{{ $member->geographicalName_id }}</td>
+                  <td>
+              
+              
+                    <ul style="list-style-type: none;margin: 0; padding: 0;">
+                      <li style="display: inline" data-id="{{$member->id}}" data-name="{{$member->name}}" data-toggle="modal" data-target="#myModal" id="editMember"><a class="btn btn-primary btn-xs" href="#">edit</a></li>
+                      <li style="display: inline" data-id="{{$member->id}}" data-name="{{$member->name}}" data-toggle="modal" data-target="#myModal" id="deleteMember"><a class="btn btn-danger btn-xs" href="#">Delete</a></li>
+                    </ul>
+                  </td>      
+              </tr>
             @endforeach
             </tbody>
           </table>

@@ -38,12 +38,13 @@
         <div class="col-xs-12 table-responsive">
           <table  class="table table-striped datatable">
             <thead>
-            <tr>
-              <th>Name</th>
-              <th>Email</th>
-              <th>Sex</th>
-              <th>Telephone</th>
-              <th>Address</th>
+              <tr>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Sex</th>
+                <th>Telephone</th>
+                <th>Address</th>
+              </tr>
             </thead>
             <tbody>
             @foreach($firstTimers as $firsttimer)

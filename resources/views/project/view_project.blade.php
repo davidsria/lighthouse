@@ -38,7 +38,7 @@
                                             <table class="table table-striped">
                                                 <thead>
                                                 <tr>
-                                                    <th>#</th>
+                                                    <th class="text-center">S/N</th>
                                                     <th class="text-center">Project</th>
                                                     <th class="text-center">Description</th>
                                                     <th class="text-center">Funds</th>

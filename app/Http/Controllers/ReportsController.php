@@ -10,6 +10,9 @@ use App\GeographicalName;
 use App\KonnectPastor;
 use App\KonnectLeader;
 use App\Report;
+use App\firstTimers;
+use App\Project;
+use App\Member;
 use Excel;
 use Session;
 
@@ -40,11 +43,27 @@ class ReportsController extends Controller
                 $attendance['user_id'] = $this->getUser($attendance['user_id']);
                 $attendance['total'] = $attendance['men'] + $attendance['women'] + $attendance['children'];
             }
+            
             $konnectAreas = User::all();
+            $members = Member::all();
+            foreach($members as $member){
+                $member['user_id'] = $this->getUser($member['user_id']);
+            }
             $reports = Report::all();
+            $projects = Project::all();
+
+            foreach($projects as $project){
+                $project['user_id'] = $this->getUser($project['user_id']);
+            }
+
             $months = array('January', 'Febuary', 'March', 'April', 'May', 'June',
                             'July', 'August', 'September', 'October', 'November', 'December');
-            return view('report', compact('attendances', 'konnectAreas', 'months', 'reports'));    
+            $firstTimers = firstTimers::all();
+            foreach($firstTimers as $firstTimer){
+                $firstTimer['user_id'] = $this->getUser($firstTimer['user_id']);
+            }
+                            
+            return view('report', compact('attendances', 'konnectAreas', 'months', 'reports','members','firstTimers','projects'));    
     }
 
     private function getUser($id){

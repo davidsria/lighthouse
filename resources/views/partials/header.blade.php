@@ -65,27 +65,24 @@
                 <img src="{{ URL::asset('dist/img/account-512.png') }}" class="img-circle" alt="User Image">
 
                 <p>
-                  Konnect Area : Ikeja
+                  Konnect Center : {{ Auth::user()->name }}
                   <small>2017 -> Year of Expanded Territory</small>
                 </p>
               </li>
               <!-- Menu Body -->
               <li class="user-body">
                 <div class="row">
-                  <div class="col-xs-4 text-center">
-                    <a href="#">Konnect Area</a>
-                  </div>
-                  <div class="col-xs-4 text-center">
-                    <a href="#">Konnect center</a>
-                  </div>
-                  <div class="col-xs-4 text-center">
-                    <a href="#">Project</a>
+                  <div class="col-xs-8 text-center">
+                    <a href="" class="btn btn-default btn-flat">Change Password</a>
                   </div>
                 </div>
                 <!-- /.row -->
               </li>
               <!-- Menu Footer-->
               <li class="user-footer">
+                <div class="pull-left">
+                  <a href="#" data-toggle="modal" data-target="#profile" class="btn btn-primary btn-flat">Profile</a>
+                </div>
                 <div class="pull-right">
                   <a href="/logout" class="btn btn-default btn-flat">Sign out</a>
                 </div>

@@ -49,4 +49,14 @@ class User extends Authenticatable implements HasRoleAndPermissionContract
         
         $this->firstTimer()->save($firstTimers);
     }
+
+    public function member(){
+        
+        return $this->hasMany(Member::class);
+    }
+
+    public function project(){
+        
+        return $this->hasMany(Project::class);
+    }
 }

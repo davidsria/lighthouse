@@ -85,7 +85,8 @@ class MembersController extends Controller
         'telephone' => 'required|max:20',
         'address' => 'required',
         ]);
-            
+
+        
        if(Member::create([
            'geographicalName_id' => $request['geographicalName_id'],
            'name' => $request['name'],
@@ -94,8 +95,8 @@ class MembersController extends Controller
            'sex' => $request['sex'],
            'telephone' => $request['telephone'],
            'address' => $request['address'],
-           'birthday' => $request['birthday'],
-           'anniversary' => $request['anniversary'],
+           'birthday' => ($request['birth_month'].$request['birth_day']),
+           'anniversary' => ($request['anni_month'].$request['anni_day']),
            'user_id' => Auth::user()->id,
            ])){
            $response = 'Member successfully added';

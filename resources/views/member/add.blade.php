@@ -192,8 +192,9 @@
 
                     <div class="col-xs-6 form-group">
                         <select name="birth_month" class="form-control">
+                          <option value="">select</option>
                           @foreach($months as $month)
-                          <option value="{{$month}}">{{$month}}</option>
+                            <option value="{{$month}}">{{$month}}</option>
                           @endforeach    
                         </select>
                     </div>
@@ -208,8 +209,9 @@
 
                 <div class="col-xs-6 form-group">
                         <select name="anni_month" class="form-control">
+                          <option value="">select</option>
                           @foreach($months as $month)
-                          <option value="{{$month}}">{{$month}}</option>
+                            <option value="{{$month}}">{{$month}}</option>
                           @endforeach    
                         </select>
                     </div>
