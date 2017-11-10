@@ -50,6 +50,12 @@
   <![endif]-->
    <script src="{{ URL::asset('js/jquery-2.2.4.min.js') }}"></script>
   
+  <!-- chart -->
+  <!-- Load c3.css -->
+	<link href="{{ URL::asset('chart/c3.min.css') }}" rel="stylesheet" />
+    <script src="{{ URL::asset('chart/d3.min.js') }}"></script>
+    <script src="{{ URL::asset('chart/c3.min.js') }}"></script>
+	<!--/chart-->
 
   <!-- Google Font -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">

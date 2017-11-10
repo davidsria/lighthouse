@@ -77,4 +77,9 @@ class KonnectAreasController extends Controller
         return view('konnectArea.editKonnectArea', compact('konnectArea', 'konnectCenters', 'geographicals', 'konnectLeaders', 'konnectPastors'));
     }
 
+    public function show($id){
+        $result = User::find($id);
+        return $result;
+    }
+
 }

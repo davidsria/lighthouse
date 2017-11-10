@@ -74,4 +74,11 @@ class AttendanceController extends Controller
         }
         return view('attendance.printAttendance',compact('date','attendances'));
     }
+
+     public function show($id)
+    {
+        //
+        $attendance = Attendance::where('user_id', $id)->get();
+        return $attendance;
+    }
 }
