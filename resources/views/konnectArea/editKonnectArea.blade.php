@@ -60,7 +60,9 @@
                 
             </div>
             <!-- /.box-body -->
+            
           </div>
+          <a href="{{ url('/konnectArea/view') }}" class="btn btn-warning ">Back to Konnect Centers</a>
           <!-- /.box -->
         <!-- /.col -->
         
