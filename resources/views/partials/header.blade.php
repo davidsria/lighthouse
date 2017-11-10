@@ -81,7 +81,7 @@
               <!-- Menu Footer-->
               <li class="user-footer">
                 <div class="pull-left">
-                  <a href="#" data-toggle="modal" data-target="#profile" class="btn btn-primary btn-flat">Profile</a>
+                  <a href="#" data-toggle="modal" data-target="#profile" class="btn btn-primary btn-flat" id="userPro" data-id="{{ Auth::user()->id }}">Profile</a>
                 </div>
                 <div class="pull-right">
                   <a href="/logout" class="btn btn-default btn-flat">Sign out</a>
@@ -94,3 +94,98 @@
         </ul>
       </div>
     </nav>
+    
+
+
+<script>
+  $(document).ready(function(){
+    $(document).on('click', '#userPro', function(event){
+      var id = $(this).data('id');
+      console.log(id);
+      $.ajax({
+        url: baseUrl+'/geographicalName/'+id,
+        type: 'get',
+        success: function(response){
+          var container = $('<span />');
+          $.each(response, function(key, value){
+            container.append(value.name+', ');
+            console.log(value.name);
+          });
+          $('#geoName').html(container);
+        }
+      })
+      $.ajax({
+        url: baseUrl+'/konnectPastor/'+id,
+        type: 'get',
+        success: function(response){
+          var container = $('<span />');
+          $.each(response, function(key, value){
+            container.append(value.name+', ');
+            console.log(value.name);
+          });
+          $('#pastorName').html(container);
+        }
+      })
+      $.ajax({
+        url: baseUrl+'/konnectleader/'+id,
+        type: 'get',
+        success: function(response){
+          var container = $('<span />');
+          $.each(response, function(key, value){
+            container.append(value.name+', ');
+            console.log(value.name);
+          });
+          $('#leaderName').html(container);
+        }
+      })
+      $.ajax({
+        url: baseUrl+'/members/'+id,
+        type: 'get',
+        success: function(response){
+          $('#noMembers').text(response.length);
+          console.log(response.length);
+        }
+      })
+      $.ajax({
+        url: baseUrl+'/projects/'+id,
+        type: 'get',
+        success: function(response){
+          $('#noProjects').text(response.length);
+          console.log(response.length);
+        }
+      })
+      $.ajax({
+        url: baseUrl+'/Attendance/'+id,
+        type: 'get',
+        success: function(response){
+          $('#noReports').text(response.length);
+          console.log(response.length);
+        }
+      })
+      $.ajax({
+        url: baseUrl+'/konnectCenter/'+id,
+        type: 'get',
+        success: function(response){
+          var container = $('<span />');
+          $.each(response, function(key, value){
+            container.append(value.name+', ');
+            console.log(value.name);
+          });
+          $('#areas').html(container);
+        }
+      })
+      $.ajax({
+        url: baseUrl+'/konnectArea/'+id,
+        type: 'get',
+        success: function(response){
+          var container = $('<span />');
+          var container2 = $('<span />');
+          container.append(response.created_at);
+          container2.append(response.updated_at);
+          $('#updated').html(container2);
+          $('#created').html(container);
+        }
+      })
+    });
+  });
+</script>

@@ -135,4 +135,11 @@ class projectController extends Controller
         $newDate = $month." ".$explodedDate[2].", ".$explodedDate[0];
         return $newDate;
     }
+
+    public function shows($id)
+    {
+        //
+        $project = Project::where('user_id', $id)->get();
+        return $project;
+    }
 }

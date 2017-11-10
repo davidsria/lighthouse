@@ -20,12 +20,14 @@ Route::get('/viewAttendance', 'AttendanceController@index');
 Route::get('/addAttendance', 'AttendanceController@create');
 Route::post('/addAttendance', 'AttendanceController@store');
 Route::get('/Attendance/print', 'AttendanceController@printer')->name('printAttendance');
+Route::get('/Attendance/{id}', 'AttendanceController@show');
 
 Route::get('/viewProject', 'projectController@index');
 Route::get('/addProject', 'projectController@create');
 Route::post('/addProject', 'projectController@store');
 Route::post('/project/delete/{id}', 'projectController@destroy');
 Route::get('/project/{id}', 'projectController@show');
+Route::get('/projects/{id}', 'projectController@shows');
 Route::post('/project/update/{id}', 'projectController@update');
 
 
@@ -45,6 +47,7 @@ Route::post('/konnectArea/add', 'KonnectAreasController@store');
 Route::get('/konnectArea/edit/{id}', 'KonnectAreasController@edit')->name('editKonnectArea');
 Route::delete('/konnectArea/delete/{id}', 'KonnectAreasController@destroy');
 Route::post('/konnectArea/update/{id}', 'KonnectAreasController@update');
+Route::get('/konnectArea/{id}', 'KonnectAreasController@show');
 
 Route::post('/konnectCenter/add', 'KonnectCenterController@store');
 Route::get('/konnectCenter/{id}', 'KonnectCenterController@show');
