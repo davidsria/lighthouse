@@ -140,6 +140,7 @@
           <div class="box box-warning">
             <div class="box-header with-border">
               <h3 class="box-title">Konnect Pastor</h3>
+              <h6>Add multiple pastors  with ';' as separator<br>e.g pastor1;pastor2;pastor3</h6>
             </div>
             <!-- /.box-header -->
             <div class="box-body">
@@ -183,6 +184,7 @@
           <div class="box box-danger">
             <div class="box-header with-border">
               <h3 class="box-title">Konnect Leader</h3>
+              <h6>Add multiple leaders  with ';' as separator<br>e.g leader1;leader2;leader3</h6>
             </div>
             <!-- /.box-header -->
             <div class="box-body">

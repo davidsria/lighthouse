@@ -16,17 +16,28 @@ class KonnectPastorsController extends Controller
         return redirect('/konnectArea/add');
     }
     
-    protected function preStore(Request $request){
+    protected function prestore(Request $request){
        $this->validate($request, [
         'name' => 'required|max:100',
         'user_id' => 'required',
-        ]);  
-       if(KonnectPastor::create($request->all())){
-            $response = 'successfully added';
-       }else{
-           $response = 'something went wrong, try again';
-       }
-       return $response;
+        ]);
+        $pastors = $this->explodePastors($request->name);
+        for($i=0; $i<count($pastors); $i++){
+            $pastor = new KonnectPastor;
+            $pastor->name = $pastors[$i];
+            $pastor->user_id = $request->user_id;
+            $pastor->save();
+        }
+        if(count($pastors)>1){
+            return count($pastors)." Konnect pastors were successfully added";
+        }else{
+            return count($pastors)." Konnect pastor was successfully added";
+        }
+    }
+
+    public function explodePastors($request){
+        $arrayPastor = explode(';', $request);
+        return $arrayPastor;
     }
 
     public function show($id){
@@ -40,7 +51,7 @@ class KonnectPastorsController extends Controller
         return response()->json(['success' => $konnectPastor->name." successfully deleted"]);
     }
 
-    public function update(REquest $request, $id){
+    public function update(Request $request, $id){
         $konnectPastor = KonnectPastor::find($id);
         $konnectPastor->update($request->all());
         return response()->json(['success' => "Successfully updated"]);
