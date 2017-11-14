@@ -19,12 +19,23 @@ class KonnectLeaderController extends Controller
         'name' => 'required|max:100',
         'user_id' => 'required',
         ]);  
-       if(KonnectLeader::create($request->all())){
-            $response = 'successfully added';
-       }else{
-           $response = 'something went wrong, try again';
-       }
-       return $response;
+       $leaders = $this->explodeLeaders($request->name);
+        for($i=0; $i<count($leaders); $i++){
+            $leader = new KonnectLeader;
+            $leader->name = $leaders[$i];
+            $leader->user_id = $request->user_id;
+            $leader->save();
+        }
+        if(count($leaders)>1){
+            return count($leaders)." Konnect leaders were successfully added";
+        }else{
+            return count($leaders)." Konnect leader was successfully added";
+        }
+    }
+
+    public function explodeLeaders($request){
+        $arrayLeader = explode(';', $request);
+        return $arrayLeader;
     }
 
     public function show($id){
